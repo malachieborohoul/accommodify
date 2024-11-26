@@ -1,0 +1,28 @@
+# Flutter generated
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# User-specific files
+.idea/
+*.iml
+.vscode/
+
+# Logs and binaries
+*.log
+*.apk
+*.aab
+*.ipa
+coverage/
+
+# Sensitive files
+.env
+*.keystore
+*.jks
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+Desktop.ini

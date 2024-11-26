@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "899207178538",
+    "project_id": "accommodation-babf6",
+    "storage_bucket": "accommodation-babf6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899207178538:android:6e666fcb590c85818b9653",
+        "android_client_info": {
+          "package_name": "com.bsm.accommodation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899207178538-isqr4froi585lq9jfia2m037fhjn1qlr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bsm.accommodation",
+            "certificate_hash": "40681a740d99da046535f236830099232464cf8a"
+          }
+        },
+        {
+          "client_id": "899207178538-9e14vi1gjfkbqhb95hnnth728a4lq51e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwNAt_T0WWXk51NlE8PLxlopLYK6d2ytc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899207178538-9e14vi1gjfkbqhb95hnnth728a4lq51e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "899207178538-dqt9ikbedcdb72i49aqr48gmkks91k14.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bsm.accommodation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
