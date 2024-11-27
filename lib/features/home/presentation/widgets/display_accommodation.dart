@@ -167,7 +167,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                             ),
                           ),
                           const Spacer(),
-                          const Icon(Icons.star),
+                          // const Icon(Icons.star),
                           const SizedBox(width: 5),
                           // Text(
                           //   place['rating'].toString(),

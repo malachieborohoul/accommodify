@@ -51,7 +51,7 @@ class SearchBarAndFilter extends StatelessWidget {
                                border: InputBorder.none, 
                                 enabledBorder: InputBorder.none,
                                 focusedBorder: InputBorder.none,
-                                hintText: "Anywhere . Any wek . Add guests",
+                                hintText: "Rechercher",
                                 hintStyle: TextStyle(
                                   color: Colors.black38,
                                   fontSize: 13,
@@ -80,7 +80,7 @@ class SearchBarAndFilter extends StatelessWidget {
             ),
             child: const Icon(
               Icons.tune,
-              size: 30,
+              size: AppPadding.smallSpacer,
             ),
           ),
         ],

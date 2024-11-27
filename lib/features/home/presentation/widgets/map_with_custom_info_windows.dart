@@ -289,7 +289,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
           children: [
             SizedBox(width: 5),
             Text(
-              "Map",
+              "Carte",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
