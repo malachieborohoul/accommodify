@@ -1,3 +1,4 @@
+import 'package:accommodation/core/contants/padding.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarAndFilter extends StatelessWidget {
@@ -32,34 +33,32 @@ class SearchBarAndFilter extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.search,
-                      size: 32,
+                      size: AppPadding.smallSpacer,
                     ),
                     SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "  Where to?",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        
                         SizedBox(
                           height: 20,
                           width: 200,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
+                          child: Center(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                isDense: true, // Réduit les marges internes
+        contentPadding: EdgeInsets.zero,
+                               border: InputBorder.none, 
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                hintText: "Anywhere . Any wek . Add guests",
+                                hintStyle: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 13,
+                                ),
+                                filled: false,
+                                fillColor: Colors.white,
                               ),
-                              hintText: "Anywhere . Any wek . Add guests",
-                              hintStyle: TextStyle(
-                                color: Colors.black38,
-                                fontSize: 13,
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
                             ),
                           ),
                         ),

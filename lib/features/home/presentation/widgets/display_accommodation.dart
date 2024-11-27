@@ -29,18 +29,28 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
     // final provider = FavoriteProvider.of(context);
     return BlocConsumer<AccommodationBloc, AccommodationState>(
       listener: (context, state) {
-        if (state is AccommodationFailure) {
+     if (state is AccommodationFailure) {
+          // Close any open dialogs and show an error snackbar
           closeLoaderDialog(context);
-
           showSnackBar(context, state.message);
+        }
+        if (state is AccommodationLoading) {
+          // Show the loader dialog
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showLoaderDialog(context);
+          });
+        }
+        if (state is AccommodationSuccess) {
+          // Ensure loader dialog is closed if accommodations loaded successfully
+          closeLoaderDialog(context);
         }
       },
       builder: (context, state) {
-        if (state is AccommodationLoading) {
-          showLoaderDialog(context);
-        }
+     
         if (state is AccommodationSuccess) {
-          ListView.builder(
+
+        
+        return  ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: state.accommodations.length,
@@ -81,7 +91,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             top: 20,
                             left: 15,
                             right: 15,
@@ -90,30 +100,30 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                                 // place['isActive'] == true
                                 //     ?
 
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(40),
-                                  ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 15,
-                                      vertical: 5,
-                                    ),
-                                    child: Text(
-                                      "GuestFavorite",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Container(
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.white,
+                                //     borderRadius: BorderRadius.circular(40),
+                                //   ),
+                                //   child: const Padding(
+                                //     padding: EdgeInsets.symmetric(
+                                //       horizontal: 15,
+                                //       vertical: 5,
+                                //     ),
+                                //     child: Text(
+                                //       "GuestFavorite",
+                                //       style: TextStyle(
+                                //         fontWeight: FontWeight.bold,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                                 // : SizedBox(
                                 //     width: size.width * 0.03,
                                 //   ),
-                                const Spacer(),
+                                Spacer(),
                                 // for favorite button
-                                const Stack(
+                                Stack(
                                   alignment: Alignment.center,
                                   children: [
                                     // white border

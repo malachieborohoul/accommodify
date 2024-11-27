@@ -1,4 +1,6 @@
 
+import 'package:accommodation/core/contants/padding.dart';
+import 'package:accommodation/features/home/presentation/widgets/display_accommodation.dart';
 import 'package:accommodation/features/home/presentation/widgets/display_total_price.dart';
 import 'package:accommodation/features/home/presentation/widgets/map_with_custom_info_windows.dart';
 import 'package:accommodation/features/home/presentation/widgets/search_bar_and_filter.dart';
@@ -29,27 +31,30 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         bottom: false,
-        child: Column(
-          children: [
-            // for search bar and filter button
-            SearchBarAndFilter(),
-            // let's fetch list of category items from firebase.
-            // listOfCategoryItems(size),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                   // for switch button
-                    DisplayTotalPrice(),
-                    SizedBox(height: 15),
-                    // displat the place items
-                    // DisplayAccommodation(),
-                  
-                  ],
+        child: Padding(
+          padding: EdgeInsets.only(top: AppPadding.appPadding),
+          child: Column(
+            children: [
+              // for search bar and filter button
+              SearchBarAndFilter(),
+              // let's fetch list of category items from firebase.
+              // listOfCategoryItems(size),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                     // for switch button
+                      // DisplayTotalPrice(),
+                      SizedBox(height: 15),
+                      // displat the place items
+                      DisplayAccommodation(),
+                    
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       // for google map
