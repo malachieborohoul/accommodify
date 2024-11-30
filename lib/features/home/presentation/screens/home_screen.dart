@@ -1,7 +1,6 @@
 
 import 'package:accommodation/core/contants/padding.dart';
 import 'package:accommodation/features/home/presentation/widgets/display_accommodation.dart';
-import 'package:accommodation/features/home/presentation/widgets/display_total_price.dart';
 import 'package:accommodation/features/home/presentation/widgets/map_with_custom_info_windows.dart';
 import 'package:accommodation/features/home/presentation/widgets/search_bar_and_filter.dart';
 

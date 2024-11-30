@@ -191,21 +191,21 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       SizedBox(height: size.height * 0.007),
                       RichText(
                         text: TextSpan(
-                          text: "\$${accommodation.price}",
+                          text: "${accommodation.price} XAF",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 16,
                           ),
                           children: const [
-                            TextSpan(
-                              text: "night",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
+                            // TextSpan(
+                            //   text: "night",
+                            //   style: TextStyle(
+                            //     fontSize: 16,
+                            //     color: Colors.black,
+                            //     fontWeight: FontWeight.normal,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

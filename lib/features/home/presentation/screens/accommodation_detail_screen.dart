@@ -1,5 +1,7 @@
 import 'package:accommodation/Provider/favorite_provider.dart';
 import 'package:accommodation/components/my_icon_button.dart';
+import 'package:accommodation/core/contants/padding.dart';
+import 'package:accommodation/core/theme/app_palette.dart';
 import 'package:accommodation/features/home/domain/entities/accommodation.dart';
 import 'package:accommodation/features/home/presentation/widgets/location_in_map.dart';
 
@@ -27,7 +29,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // detail image , back button, share and favorite button
-            // detailImageandIcon(size, context, provider),
+            detailImageandIcon(size, context),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: Column(
@@ -36,28 +38,21 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   Text(
                     widget.accommodation.title,
                     maxLines: 2,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      height: 1.2,
-                      fontWeight: FontWeight.bold,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: size.height * 0.02),
                   Text(
-                    "Room in ${widget.accommodation.address}",
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    "Chambre à ${widget.accommodation.address}",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    
                   ),
-                  const Text(
-                    'bedAndBathroom',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  // const Text(
+                  //   'bedAndBathroom',
+                  //   style: TextStyle(
+                  //     fontSize: 17,
+                  //     fontWeight: FontWeight.w400,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -103,29 +98,27 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                       "Shared bathroom",
                       "Your'll share the bathroom with others."),
                   const Divider(),
-                  SizedBox(height: size.height * 0.02),
-                  const Text(
-                    "About this place",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
+                  const SizedBox(height: AppPadding.miniSpacer),
+                   Text(
+                    "A propos",
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)
                   ),
-                  const Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                  const SizedBox(height: AppPadding.miniSpacer),
+
+                   Text(widget.accommodation.description),
                   const Divider(),
-                  const Text(
-                    "Where  you'll be",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const SizedBox(height: AppPadding.miniSpacer),
+
+                   Text(
+                    "Où vous serez",
+                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)
+
                   ),
+                  const SizedBox(height: AppPadding.miniSpacer),
+
                   Text(
                     widget.accommodation.address,
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   SizedBox(
                     height: 400,
@@ -152,64 +145,33 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         color: Colors.white,
         border: Border.all(color: Colors.black12),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RichText(
-                text: TextSpan(
-                  text: "\$${widget.accommodation.price} ",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                  children: const [
-                    TextSpan(
-                      text: "night",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
-                ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("${widget.accommodation.price} XAF nuitée "),
+           
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 35,
+                vertical: 15,
               ),
-              Text(
-                widget.accommodation.date,
-                style: const TextStyle(
-                  fontSize: 16,
+              decoration: BoxDecoration(
+                color: AppPalette.gradient1,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Text(
+                "Contactez",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            width: size.width * 0.3,
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 35,
-              vertical: 15,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.pink,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: const Text(
-              "Reserve",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -359,7 +321,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
   //   );
   // }
 
-  Stack detailImageandIcon(Size size, BuildContext context, provider) {
+  Stack detailImageandIcon(Size size, BuildContext context) {
     return Stack(
       children: [
         SizedBox(
@@ -406,7 +368,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
                   onTap: () {
@@ -416,28 +378,33 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                     icon: Icons.arrow_back_ios_new,
                   ),
                 ),
-                SizedBox(
-                  width: size.width * 0.55,
-                ),
-                const MyIconButton(icon: Icons.share_outlined),
-                const SizedBox(width: 20),
+                
+                // const MyIconButton(icon: Icons.share_outlined),
+                //  SizedBox(width: size.width * 0.9),
                 // after this all let's make favorite button function by using provider
-                InkWell(
-                  onTap: () {
-                    provider.toggleFavorite(widget.accommodation);
-                  },
-                  child: MyIconButton(
-                    icon: 
-                    // provider.isExist(widget.place)
-                    //     ? Icons.favorite
-                    //     : 
-                        
-                        
-                        Icons.favorite_border,
-                    iconColor: provider.isExist(widget.accommodation)
-                        ? Colors.red
-                        : Colors.black,
-                  ),
+                Row(
+                  children: [
+                    const MyIconButton(icon: Icons.share_outlined),
+                    const SizedBox(
+                  width: 20,
+                ),
+                    InkWell(
+                      onTap: () {
+                        // provider.toggleFavorite(widget.accommodation);
+                      },
+                      child: const MyIconButton(
+                        icon: 
+                        // provider.isExist(widget.place)
+                        //     ? Icons.favorite
+                        //     : 
+                            
+                            
+                            Icons.favorite_border,
+                        iconColor: 
+                             Colors.black,
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),

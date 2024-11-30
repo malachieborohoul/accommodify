@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:accommodation/features/home/domain/entities/accommodation.dart';
 
 class AccommodationModel extends Accommodation{
-  AccommodationModel({required super.id, required super.title, required super.image, required super.date, required super.price, required super.address, required super.latitude, required super.longitude, required super.imageUrls});
+  AccommodationModel({required super.id, required super.title, required super.image, required super.date, required super.price, required super.address,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
 
 
   Map<String, dynamic> toMap() {
@@ -14,6 +14,7 @@ class AccommodationModel extends Accommodation{
       'date': date,
       'price': price,
       'address': address,
+      'description': description,
       'latitude': latitude,
       'longitude': longitude,
       'imageUrls': imageUrls,
@@ -28,6 +29,7 @@ class AccommodationModel extends Accommodation{
       date: map['date'] ?? '',
       price: map['price'] ?? 0,
       address: map['address'] ?? '',
+      description: map['description'] ?? '',
       latitude: map['latitude'] ?? '',
       longitude: map['longitude'] ?? '',
       imageUrls: map['imageUrls'] ?? [],
@@ -46,6 +48,7 @@ class AccommodationModel extends Accommodation{
     String? date,
     int? price,
     String? address,
+    String? description,
     double? latitude,
     double? longitude,
     List<String>? imageUrls
@@ -58,6 +61,7 @@ class AccommodationModel extends Accommodation{
       date: image ?? this.date,
       price: price ?? this.price,
       address: address ?? this.address,
+      description: description ?? this.description,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       imageUrls: imageUrls ?? this.imageUrls,

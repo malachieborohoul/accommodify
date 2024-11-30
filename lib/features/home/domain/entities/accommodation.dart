@@ -5,6 +5,7 @@ class Accommodation {
   final String date;
   final int price;
   final String address;
+  final String description;
   
   final double latitude;
   final double longitude;
@@ -18,6 +19,7 @@ class Accommodation {
       required this.date,
       required this.price,
       required this.address,
+      required this.description,
      
       required this.latitude,
       required this.longitude,
