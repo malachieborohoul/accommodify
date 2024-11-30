@@ -1,3 +1,4 @@
+import 'package:accommodation/core/contants/padding.dart';
 import 'package:accommodation/core/utils/loader_dialog.dart';
 import 'package:accommodation/core/utils/show_snackbar.dart';
 import 'package:accommodation/features/home/presentation/bloc/accommodation_bloc.dart';
@@ -77,18 +78,26 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       Stack(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: SizedBox(
-                              height: 375,
+                            borderRadius: BorderRadius.circular(25),
+                            child: Container(
+                              height: 300,
                               width: double.infinity,
-                              child: AnotherCarousel(
-                                images: accommodation.imageUrls
-                                    .map((url) => NetworkImage(url))
-                                    .toList(),
-                                dotSize: 6,
-                                indicatorBgPadding: 5,
-                                dotBgColor: Colors.transparent,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                image: DecorationImage(
+                                  image: NetworkImage(accommodation.imageUrls[0]),
+                                  fit: BoxFit.cover, // S'assure que l'image remplit le conteneur
+                                ),
                               ),
+                              
+                              // AnotherCarousel(
+                              //   images: accommodation.imageUrls
+                              //       .map((url) => NetworkImage(url))
+                              //       .toList(),
+                              //   dotSize: 6,
+                              //   indicatorBgPadding: 5,
+                              //   dotBgColor: Colors.transparent,
+                              // ),
                             ),
                           ),
                           const Positioned(
@@ -129,7 +138,8 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                                     // white border
                                     Icon(
                                       Icons.favorite_outline_rounded,
-                                      size: 34,
+                                      size: AppPadding.smallSpacer-5,
+
                                       color: Colors.white,
                                     ),
                                     // InkWell(
@@ -159,12 +169,9 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       Row(
                         children: [
                           Text(
-                            accommodation.address,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
+                            accommodation.title,
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
+
                           ),
                           const Spacer(),
                           // const Icon(Icons.star),
@@ -181,6 +188,13 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       //     fontSize: 16.5,
                       //   ),
                       // ),
+                      Text(
+                        accommodation.address,
+                        style: const TextStyle(
+                          fontSize: 16.5,
+                          color: Colors.black54,
+                        ),
+                      ),
                       Text(
                         accommodation.date,
                         style: const TextStyle(

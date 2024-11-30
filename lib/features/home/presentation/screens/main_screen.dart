@@ -62,6 +62,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
         items: [
            BottomNavigationBarItem(
             icon: Icon(
+                      size: AppPadding.smallSpacer-5,
+
               
               Icons.home,
               color: selectedIndex == 0 ? AppPalette.gradient1 : Colors.black45,
@@ -70,6 +72,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+                      size: AppPadding.smallSpacer-5,
+
               Icons.favorite_border,
               color: selectedIndex == 1 ? AppPalette.gradient1 : Colors.black45,
             ),
@@ -79,6 +83,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
         
           BottomNavigationBarItem(
             icon: Icon(
+                      size: AppPadding.smallSpacer-5,
+
               Icons.person_outline,
               color: selectedIndex == 2 ? AppPalette.gradient1 : Colors.black45,
             ),

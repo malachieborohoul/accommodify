@@ -85,18 +85,18 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   placePropertyList(
                       size,
                       "https://cdn-icons-png.flaticon.com/512/6192/6192020.png",
-                      "Room in a rental unit",
-                      "Your own room in a home, pluse access\nto shared spaces."),
+                      "Chambre moderne",
+                      "Votre propre chambre dans un foyer, plus d'accès aux espaces partagés."),
                   placePropertyList(
                       size,
                       "https://cdn0.iconfinder.com/data/icons/co-working/512/coworking-sharing-17-512.png",
-                      "Shared common spaces",
-                      "You'll share parts of the home with the host,"),
+                      "Service Restaurant",
+                      "Une restautation avec des mets locaux."),
                   placePropertyList(
                       size,
                       "https://img.pikbest.com/element_our/20230223/bg/102f90fb4dec6.png!w700wp",
-                      "Shared bathroom",
-                      "Your'll share the bathroom with others."),
+                      "Service Spa",
+                      "Vous partagerez le spa avec d'autres personnes."),
                   const Divider(),
                   const SizedBox(height: AppPadding.miniSpacer),
                    Text(
@@ -106,6 +106,8 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   const SizedBox(height: AppPadding.miniSpacer),
 
                    Text(widget.accommodation.description),
+                  const SizedBox(height: AppPadding.miniSpacer),
+
                   const Divider(),
                   const SizedBox(height: AppPadding.miniSpacer),
 
@@ -120,6 +122,8 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                     widget.accommodation.address,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
+                  const SizedBox(height: AppPadding.miniSpacer),
+
                   SizedBox(
                     height: 400,
                     width: size.width,
@@ -150,7 +154,12 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("${widget.accommodation.price} XAF nuitée "),
+            Row(
+              children: [
+                Text("${widget.accommodation.price} XAF ", style: TextStyle(fontWeight: FontWeight.bold),),
+                const Text("nuitée "),
+              ],
+            ),
            
             Container(
               padding: const EdgeInsets.symmetric(
@@ -185,7 +194,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           CircleAvatar(
             backgroundColor: Colors.white,
             backgroundImage: NetworkImage(image),
-            radius: 29,
+            radius: 20,
           ),
           SizedBox(
             width: size.width * 0.05,
@@ -196,10 +205,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w600,
-                ),
+                style:Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
               ),
               Text(
                 subtitle,

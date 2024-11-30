@@ -33,7 +33,7 @@ class SearchBarAndFilter extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.search,
-                      size: AppPadding.smallSpacer,
+                      size: AppPadding.smallSpacer-5,
                     ),
                     SizedBox(width: 8),
                     Column(
@@ -80,7 +80,7 @@ class SearchBarAndFilter extends StatelessWidget {
             ),
             child: const Icon(
               Icons.tune,
-              size: AppPadding.smallSpacer,
+              size: AppPadding.miniSpacer+5,
             ),
           ),
         ],
