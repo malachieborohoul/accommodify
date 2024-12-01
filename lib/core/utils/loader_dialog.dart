@@ -1,4 +1,4 @@
-import 'package:accommodation/core/common/widgets/loader.dart';
+import 'package:Accommodify/core/common/widgets/loader.dart';
 import 'package:flutter/material.dart';
 
 void showLoaderDialog(BuildContext context) {

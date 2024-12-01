@@ -1,7 +1,7 @@
 
-import 'package:accommodation/core/contants/padding.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
-import 'package:accommodation/features/home/presentation/screens/home_screen.dart';
+import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:Accommodify/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {

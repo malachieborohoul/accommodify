@@ -1,7 +1,7 @@
 
 
-import 'package:accommodation/core/common/entities/user.dart';
-import 'package:accommodation/core/utils/typedef.dart';
+import 'package:Accommodify/core/common/entities/user.dart';
+import 'package:Accommodify/core/utils/typedef.dart';
 
 abstract interface class AuthRepository {
   ResultFuture<User> signUp({

@@ -1,9 +1,9 @@
-import 'package:accommodation/core/error/exceptions.dart';
-import 'package:accommodation/core/error/failures.dart';
-import 'package:accommodation/core/utils/typedef.dart';
-import 'package:accommodation/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:accommodation/features/auth/data/models/user_model.dart';
-import 'package:accommodation/features/auth/domain/repositories/auth_repository.dart';
+import 'package:Accommodify/core/error/exceptions.dart';
+import 'package:Accommodify/core/error/failures.dart';
+import 'package:Accommodify/core/utils/typedef.dart';
+import 'package:Accommodify/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:Accommodify/features/auth/data/models/user_model.dart';
+import 'package:Accommodify/features/auth/domain/repositories/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
 

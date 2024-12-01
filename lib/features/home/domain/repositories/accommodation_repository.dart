@@ -1,5 +1,5 @@
-import 'package:accommodation/core/utils/typedef.dart';
-import 'package:accommodation/features/home/data/models/accommodation_model.dart';
+import 'package:Accommodify/core/utils/typedef.dart';
+import 'package:Accommodify/features/home/data/models/accommodation_model.dart';
 
 
 

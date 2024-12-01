@@ -1,5 +1,6 @@
-import 'package:accommodation/features/home/domain/entities/accommodation.dart';
-import 'package:accommodation/features/home/domain/usecases/accommodation_get_accommodations.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
+import 'package:Accommodify/features/home/domain/usecases/accommodation_get_accommodations.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

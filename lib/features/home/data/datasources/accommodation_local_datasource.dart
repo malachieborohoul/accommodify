@@ -1,5 +1,6 @@
-import 'package:accommodation/core/error/exceptions.dart';
-import 'package:accommodation/features/home/data/models/accommodation_model.dart';
+import 'package:Accommodify/core/error/exceptions.dart';
+
+import 'package:Accommodify/features/home/data/models/accommodation_model.dart';
 import 'package:flutter/material.dart';
 
 

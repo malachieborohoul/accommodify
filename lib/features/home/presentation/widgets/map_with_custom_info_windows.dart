@@ -1,8 +1,10 @@
-import 'package:accommodation/components/my_icon_button.dart';
-import 'package:accommodation/core/utils/loader_dialog.dart';
-import 'package:accommodation/core/utils/show_snackbar.dart';
-import 'package:accommodation/features/home/presentation/bloc/accommodation_bloc.dart';
+import 'package:Accommodify/components/my_icon_button.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:Accommodify/core/utils/loader_dialog.dart';
+import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/home/presentation/bloc/accommodation_bloc.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_info_window/custom_info_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,15 +52,15 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
     );
   }
 
-  void _updateMarkers(List accommodations) {
+  void _updateMarkers(List Accommodifys) {
     Size size = MediaQuery.of(context).size;
 
-    List<Marker> myMarkers = accommodations.map<Marker>((accommodation) {
+    List<Marker> myMarkers = Accommodifys.map<Marker>((Accommodify) {
       return Marker(
-        markerId: MarkerId(accommodation.address),
+        markerId: MarkerId(Accommodify.address),
         position: LatLng(
-          accommodation.latitude,
-          accommodation.longitude,
+          Accommodify.latitude,
+          Accommodify.longitude,
         ),
         onTap: () {
           _customInfoWindowController.addInfoWindow!(
@@ -81,9 +83,16 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                             topRight: Radius.circular(25),
                           ),
                           child: AnotherCarousel(
-                            images: accommodation.imageUrls
-                                .map((url) => NetworkImage(url))
-                                .toList(),
+                            images: Accommodify.imageUrls.map((url) {
+    return CachedNetworkImage(
+      imageUrl: url,
+      fit: BoxFit.cover,
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(color: AppPalette.gradient1),
+      ),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
+    );
+  }).toList(),
                             dotSize: 5,
                             indicatorBgPadding: 5,
                             dotBgColor: Colors.transparent,
@@ -128,7 +137,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                         Row(
                           children: [
                             Text(
-                              accommodation.title,
+                              Accommodify.title,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
@@ -137,10 +146,10 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                             const Spacer(),
                           ],
                         ),
-                        Text(accommodation.address),
+                        Text(Accommodify.address),
                         SizedBox(height: size.height * 0.007),
                         Text(
-                          "${accommodation.price} XAF",
+                          "${Accommodify.price} XAF",
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -154,8 +163,8 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
               ),
             ),
             LatLng(
-              accommodation.latitude,
-              accommodation.longitude,
+              Accommodify.latitude,
+              Accommodify.longitude,
             ),
           );
         },

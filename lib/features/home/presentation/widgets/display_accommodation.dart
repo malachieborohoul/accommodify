@@ -1,10 +1,9 @@
-import 'package:accommodation/core/contants/padding.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
-import 'package:accommodation/core/utils/loader_dialog.dart';
-import 'package:accommodation/core/utils/show_snackbar.dart';
-import 'package:accommodation/features/home/presentation/bloc/accommodation_bloc.dart';
-import 'package:accommodation/features/home/presentation/screens/accommodation_detail_screen.dart';
-import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:Accommodify/core/utils/loader_dialog.dart';
+import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/home/presentation/bloc/accommodation_bloc.dart';
+import 'package:Accommodify/features/home/presentation/screens/accommodation_detail_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
@@ -44,7 +43,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
           });
         }
         if (state is AccommodationSuccess) {
-          // Ensure loader dialog is closed if accommodations loaded successfully
+          // Ensure loader dialog is closed if Accommodifys loaded successfully
           closeLoaderDialog(context);
         }
       },
@@ -59,7 +58,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
             itemCount: state.accommodations.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              final accommodation = state.accommodations[index];
+              final Accommodify = state.accommodations[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -70,7 +69,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => AccommodationDetailScreen(
-                            accommodation: accommodation),
+                            Accommodify: Accommodify),
                       ),
                     );
                   },
@@ -85,7 +84,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
     height: 300,
     width: double.infinity,
     child: CachedNetworkImage(
-      imageUrl: accommodation.imageUrls[0],
+      imageUrl: Accommodify.imageUrls[0],
       fit: BoxFit.cover, // Assure que l'image remplit le conteneur
       placeholder: (context, url) => Center(
         child: Container(
@@ -171,7 +170,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       Row(
                         children: [
                           Text(
-                            accommodation.title,
+                            Accommodify.title,
                             style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
 
                           ),
@@ -191,14 +190,14 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       //   ),
                       // ),
                       Text(
-                        accommodation.address,
+                        Accommodify.address,
                         style: const TextStyle(
                           fontSize: 16.5,
                           color: Colors.black54,
                         ),
                       ),
                       Text(
-                        accommodation.date,
+                        Accommodify.date,
                         style: const TextStyle(
                           fontSize: 16.5,
                           color: Colors.black54,
@@ -207,7 +206,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       SizedBox(height: size.height * 0.007),
                       RichText(
                         text: TextSpan(
-                          text: "${accommodation.price} XAF",
+                          text: "${Accommodify.price} XAF",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,

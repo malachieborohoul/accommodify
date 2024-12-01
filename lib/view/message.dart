@@ -1,5 +1,5 @@
 
-import 'package:accommodation/components/my_icon_button.dart';
+import 'package:Accommodify/components/my_icon_button.dart';
 import 'package:flutter/material.dart';
 import '../model/message_model.dart';
 

@@ -1,10 +1,13 @@
+import 'package:Accommodify/core/utils/loader_dialog.dart';
+import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:Accommodify/features/auth/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:accommodation/core/common/widgets/custom_button.dart';
-import 'package:accommodation/core/contants/constants.dart';
-import 'package:accommodation/core/contants/padding.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
-import 'package:accommodation/features/auth/presentation/screens/signin_screen.dart';
-import 'package:accommodation/features/auth/presentation/widgets/custom_rich_text.dart';
+import 'package:Accommodify/core/common/widgets/custom_button.dart';
+import 'package:Accommodify/core/contants/constants.dart';
+import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -47,65 +50,78 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          PageView(
-            onPageChanged: (int page) {
-              setState(() {
-                currentIndex = page;
-              });
-            },
-            controller: _pageController,
+      body: BlocConsumer<AuthBloc, AuthState>(
+           listener: (context, state) {
+                  if (state is AuthLoading) {
+                    showLoaderDialog(context);
+                  } else {
+                    closeLoaderDialog(context);
+                    if (state is AuthFailure) {
+                      showSnackBar(context, state.message);
+                    } else if (state is AuthSuccess) {
+                      Navigator.pushAndRemoveUntil(
+                          context, SplashScreen.route(), (route) => false);
+                    }
+                  }
+                },
+        builder: (context, state) {
+          return Stack(
+            alignment: Alignment.bottomCenter,
             children: [
-              makePage(
-                image: "group.webp",
-                title: "Beauty Made Simple Wellness Made Essential",
-                content:
-                    "Transform Your Look, Transform Your Life, Your Ultimate Desire Awaits Here.",
+              PageView(
+                onPageChanged: (int page) {
+                  setState(() {
+                    currentIndex = page;
+                  });
+                },
+                controller: _pageController,
+                children: [
+                  makePage(
+                    image: "hotel.webp",
+                    title: "Simplifiez votre recherche, trouvez votre logement",
+                    content: "",
+                    button: true,
+                  ),
+                  // makePage(
+                  //     image: "graph.webp",
+                  //     title: "Track Your Progress, Celebrate Your Success",
+                  //     content:
+                  //         "Stay motivated by watching your transformation unfold. Ready to begin?",
+                  //     button: true,
+                  //     prefs: prefs),
+                ],
               ),
-              makePage(
-                  image: "graph.webp",
-                  title: "Track Your Progress, Celebrate Your Success",
-                  content:
-                      "Stay motivated by watching your transformation unfold. Ready to begin?",
-                  button: true,
-                  prefs: prefs),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: size.height * .15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _buildIndicator(),
-            ),
-          ),
-          currentIndex < 1
-              ? Container(
-                  margin: EdgeInsets.only(bottom: size.height * .05),
-                  child: CustomRichText(
-                    primaryText: "Skip to",
-                    secondaryText: " Sign In",
-                    onTap: () {
-                      // prefs!.setString('x-auth-token', '');
+              // Container(
+              //   margin: EdgeInsets.only(bottom: size.height * .15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: _buildIndicator(),
+              //   ),
+              // ),
 
-                      Navigator.push(context, SigninScreen.route());
-                    },
-                  ),
-                )
-              : Padding(
-                  padding: EdgeInsets.only(
-                    bottom: size.height * .05,
-                    left: AppPadding.appPadding,
-                    right: AppPadding.appPadding,
-                  ),
-                  child:
-                      CustomButton(buttonText: "Get Started", onPressed: () {
-                          prefs!.setString('x-auth-token', '');
-                          Navigator.push(context, SigninScreen.route());
-                      }),
-                )
-        ],
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: size.height * .05,
+                  left: AppPadding.appPadding,
+                  right: AppPadding.appPadding,
+                ),
+                child: CustomButton(
+                    isImage: true,
+                    svgImage: "google_logo.svg",
+                    textColor: Colors.black,
+                    primaryColor: Colors.white,
+                    secondaryColor: Colors.white,
+                    buttonText: "Connectez vous avec Google",
+                    onPressed: () {
+                      // prefs!.setString('x-auth-token', '');
+                      // Navigator.push(context, SigninScreen.route());
+
+                      context.read<AuthBloc>().add(AuthSignUpWithGoogle());
+                    }),
+              )
+            ],
+          );
+        },
       ),
     );
   }
@@ -114,10 +130,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       {image, title, content, button = false, SharedPreferences? prefs}) {
     return Stack(
       children: [
-        Image.asset(
-          color: const Color.fromARGB(255, 236, 229, 229),
-          '${Constants.assetImg}background.webp',
-        ),
         Container(
           padding: const EdgeInsets.only(
               left: AppPadding.appPadding,
@@ -138,7 +150,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Text(
                 title,
-                style: Theme.of(context).textTheme.headlineSmall!,
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -148,9 +160,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 content,
                 style: Theme.of(context)
                     .textTheme
-                    .bodySmall!
+                    .bodyMedium!
                     .copyWith(color: AppPalette.greyColor),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.justify,
               ),
               const SizedBox(
                 height: 30,
@@ -162,26 +174,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _indicator(bool isActive) {
-    return AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        height: 8,
-        width: isActive ? 30 : 8,
-        margin: const EdgeInsets.only(right: 5),
-        decoration: BoxDecoration(
-            color: AppPalette.gradient2,
-            borderRadius: BorderRadius.circular(5)));
-  }
+  // Widget _indicator(bool isActive) {
+  //   return AnimatedContainer(
+  //       duration: const Duration(milliseconds: 300),
+  //       height: 8,
+  //       width: isActive ? 30 : 8,
+  //       margin: const EdgeInsets.only(right: 5),
+  //       decoration: BoxDecoration(
+  //           color: AppPalette.gradient2,
+  //           borderRadius: BorderRadius.circular(5)));
+  // }
 
-  List<Widget> _buildIndicator() {
-    List<Widget> indicators = [];
-    for (int i = 0; i < 2; i++) {
-      if (currentIndex == i) {
-        indicators.add(_indicator(true));
-      } else {
-        indicators.add(_indicator(false));
-      }
-    }
-    return indicators;
-  }
+  // List<Widget> _buildIndicator() {
+  //   List<Widget> indicators = [];
+  //   for (int i = 0; i < 2; i++) {
+  //     if (currentIndex == i) {
+  //       indicators.add(_indicator(true));
+  //     } else {
+  //       indicators.add(_indicator(false));
+  //     }
+  //   }
+  //   return indicators;
+  // }
 }

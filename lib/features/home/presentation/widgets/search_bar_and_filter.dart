@@ -1,4 +1,4 @@
-import 'package:accommodation/core/contants/padding.dart';
+import 'package:Accommodify/core/contants/padding.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarAndFilter extends StatelessWidget {

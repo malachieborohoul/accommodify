@@ -1,18 +1,18 @@
-import 'package:accommodation/core/usecase/usecase.dart';
-import 'package:accommodation/core/utils/typedef.dart';
-import 'package:accommodation/features/home/domain/entities/accommodation.dart';
-import 'package:accommodation/features/home/domain/repositories/accommodation_repository.dart';
+import 'package:Accommodify/core/usecase/usecase.dart';
+import 'package:Accommodify/core/utils/typedef.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
+import 'package:Accommodify/features/home/domain/repositories/accommodation_repository.dart';
 import 'package:flutter/material.dart';
 
 class AccommodGetAccommodations implements UsecaseWithoutParams<List<Accommodation>> {
-  final AccommodationRepository accommodationRepository;
+  final AccommodationRepository AccommodifyRepository;
 
-  AccommodGetAccommodations(this.accommodationRepository);
+  AccommodGetAccommodations(this.AccommodifyRepository);
   @override
   ResultFuture<List<Accommodation>> call() async {
       debugPrint("💡From AccomGetAccommodations ");
 
-        return await accommodationRepository.getAccommodations();
+        return await AccommodifyRepository.getAccommodations();
 
   }
 }

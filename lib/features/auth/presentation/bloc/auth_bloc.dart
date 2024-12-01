@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:accommodation/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:accommodation/core/common/entities/user.dart';
-import 'package:accommodation/features/auth/domain/usecases/current_user.dart';
-import 'package:accommodation/features/auth/domain/usecases/sign_up_with_apple.dart';
-import 'package:accommodation/features/auth/domain/usecases/sign_up_with_google.dart';
-import 'package:accommodation/features/auth/domain/usecases/user_sign_in.dart';
-import 'package:accommodation/features/auth/domain/usecases/user_sign_out.dart';
-import 'package:accommodation/features/auth/domain/usecases/user_sign_up.dart';
+import 'package:Accommodify/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:Accommodify/core/common/entities/user.dart';
+import 'package:Accommodify/features/auth/domain/usecases/current_user.dart';
+import 'package:Accommodify/features/auth/domain/usecases/sign_up_with_apple.dart';
+import 'package:Accommodify/features/auth/domain/usecases/sign_up_with_google.dart';
+import 'package:Accommodify/features/auth/domain/usecases/user_sign_in.dart';
+import 'package:Accommodify/features/auth/domain/usecases/user_sign_out.dart';
+import 'package:Accommodify/features/auth/domain/usecases/user_sign_up.dart';
 
 
 part 'auth_event.dart';

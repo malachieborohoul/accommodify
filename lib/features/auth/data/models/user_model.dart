@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:accommodation/core/common/entities/user.dart';
+import 'package:Accommodify/core/common/entities/user.dart';
 
 
 

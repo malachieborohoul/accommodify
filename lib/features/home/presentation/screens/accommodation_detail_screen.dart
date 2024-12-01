@@ -1,17 +1,16 @@
-import 'package:accommodation/Provider/favorite_provider.dart';
-import 'package:accommodation/components/my_icon_button.dart';
-import 'package:accommodation/core/contants/padding.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
-import 'package:accommodation/features/home/domain/entities/accommodation.dart';
-import 'package:accommodation/features/home/presentation/widgets/location_in_map.dart';
+import 'package:Accommodify/components/my_icon_button.dart';
+import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
+import 'package:Accommodify/features/home/presentation/widgets/location_in_map.dart';
 
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AccommodationDetailScreen extends StatefulWidget {
-  final Accommodation accommodation;
-  const AccommodationDetailScreen({super.key, required this.accommodation});
+  final Accommodation Accommodify;
+  const AccommodationDetailScreen({super.key, required this.Accommodify});
 
   @override
   State<AccommodationDetailScreen> createState() => _AccommodationDetailScreenState();
@@ -37,13 +36,13 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.accommodation.title,
+                    widget.Accommodify.title,
                     maxLines: 2,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: size.height * 0.02),
                   Text(
-                    "Chambre à ${widget.accommodation.address}",
+                    "Chambre à ${widget.Accommodify.address}",
                     style: Theme.of(context).textTheme.bodyLarge,
                     
                   ),
@@ -106,7 +105,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   ),
                   const SizedBox(height: AppPadding.miniSpacer),
 
-                   Text(widget.accommodation.description),
+                   Text(widget.Accommodify.description),
                   const SizedBox(height: AppPadding.miniSpacer),
 
                   const Divider(),
@@ -120,7 +119,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   const SizedBox(height: AppPadding.miniSpacer),
 
                   Text(
-                    widget.accommodation.address,
+                    widget.Accommodify.address,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: AppPadding.miniSpacer),
@@ -129,7 +128,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                     height: 400,
                     width: size.width,
                     child: LocationInMap(
-                      accommodation: widget.accommodation,
+                      Accommodify: widget.Accommodify,
                     ),
                   ),
                   const SizedBox(height: 100),
@@ -157,7 +156,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           children: [
             Row(
               children: [
-                Text("${widget.accommodation.price} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
+                Text("${widget.Accommodify.price} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
                 const Text("nuitée "),
               ],
             ),
@@ -334,7 +333,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         SizedBox(
           height: size.height * 0.35,
           child: AnotherCarousel(
-            images: widget.accommodation.imageUrls.map((url) {
+            images: widget.Accommodify.imageUrls.map((url) {
     return CachedNetworkImage(
       imageUrl: url,
       fit: BoxFit.cover,
@@ -366,7 +365,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10), color: Colors.black45),
             child: Text(
-              "${currentIndex + 1} / ${widget.accommodation.imageUrls.length}",
+              "${currentIndex + 1} / ${widget.Accommodify.imageUrls.length}",
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -404,7 +403,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                 ),
                     InkWell(
                       onTap: () {
-                        // provider.toggleFavorite(widget.accommodation);
+                        // provider.toggleFavorite(widget.Accommodify);
                       },
                       child: const MyIconButton(
                         icon: 

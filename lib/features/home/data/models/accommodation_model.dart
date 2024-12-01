@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:accommodation/features/home/domain/entities/accommodation.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
+
 
 class AccommodationModel extends Accommodation{
   AccommodationModel({required super.id, required super.title, required super.image, required super.date, required super.price, required super.address,required super.description, required super.latitude, required super.longitude, required super.imageUrls});

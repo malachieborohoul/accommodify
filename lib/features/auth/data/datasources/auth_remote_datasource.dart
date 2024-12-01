@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:accommodation/core/error/exceptions.dart';
-import 'package:accommodation/features/auth/data/models/user_model.dart';
+import 'package:Accommodify/core/error/exceptions.dart';
+import 'package:Accommodify/features/auth/data/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 

@@ -1,4 +1,4 @@
-import 'package:accommodation/core/utils/typedef.dart';
+import 'package:Accommodify/core/utils/typedef.dart';
 
 abstract interface class Usecase<SuccessType, Params> {
   ResultFuture<SuccessType> call(Params params);

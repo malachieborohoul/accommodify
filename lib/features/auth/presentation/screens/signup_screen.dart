@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:accommodation/core/common/widgets/custom_button.dart';
-import 'package:accommodation/core/contants/padding.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
-import 'package:accommodation/core/utils/loader_dialog.dart';
-import 'package:accommodation/core/utils/show_snackbar.dart';
-import 'package:accommodation/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:accommodation/features/auth/presentation/screens/signin_screen.dart';
-import 'package:accommodation/core/common/widgets/auth_field.dart';
-import 'package:accommodation/features/auth/presentation/screens/splash_screen.dart';
-import 'package:accommodation/features/auth/presentation/widgets/custom_button_social.dart';
-import 'package:accommodation/features/auth/presentation/widgets/custom_divider_with_text.dart';
+import 'package:Accommodify/core/common/widgets/custom_button.dart';
+import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
+import 'package:Accommodify/core/utils/loader_dialog.dart';
+import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:Accommodify/features/auth/presentation/screens/signin_screen.dart';
+import 'package:Accommodify/core/common/widgets/auth_field.dart';
+import 'package:Accommodify/features/auth/presentation/screens/splash_screen.dart';
+import 'package:Accommodify/features/auth/presentation/widgets/custom_button_social.dart';
+import 'package:Accommodify/features/auth/presentation/widgets/custom_divider_with_text.dart';
 
 class SignupSreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {

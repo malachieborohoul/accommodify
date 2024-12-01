@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:accommodation/core/theme/app_palette.dart';
+import 'package:Accommodify/core/theme/app_palette.dart';
 
 class CustomDividerWithText extends StatelessWidget {
   final String text;

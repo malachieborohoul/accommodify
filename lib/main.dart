@@ -1,10 +1,10 @@
 
-import 'package:accommodation/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:accommodation/core/theme/theme.dart';
-import 'package:accommodation/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:accommodation/features/auth/presentation/screens/splash_screen.dart';
-import 'package:accommodation/features/home/presentation/bloc/accommodation_bloc.dart';
-import 'package:accommodation/init_dependencies.dart';
+import 'package:Accommodify/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:Accommodify/core/theme/theme.dart';
+import 'package:Accommodify/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:Accommodify/features/auth/presentation/screens/splash_screen.dart';
+import 'package:Accommodify/features/home/presentation/bloc/accommodation_bloc.dart';
+import 'package:Accommodify/init_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

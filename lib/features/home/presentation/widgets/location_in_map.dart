@@ -1,12 +1,12 @@
-import 'package:accommodation/features/home/domain/entities/accommodation.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationInMap extends StatefulWidget {
-  final Accommodation accommodation;
+  final Accommodation Accommodify;
   const LocationInMap({
     super.key,
-    required this.accommodation,
+    required this.Accommodify,
   });
 
   @override
@@ -22,18 +22,18 @@ class _LocationInMapState extends State<LocationInMap> {
       markers: {
         Marker(
           markerId: MarkerId(
-            widget.accommodation.address,
+            widget.Accommodify.address,
           ),
           position: LatLng(
-            widget.accommodation.latitude,
-            widget.accommodation.latitude,
+            widget.Accommodify.latitude,
+            widget.Accommodify.latitude,
           ),
         ),
       },
       initialCameraPosition: CameraPosition(
         target: LatLng(
-          widget.accommodation.latitude,
-            widget.accommodation.latitude,
+          widget.Accommodify.latitude,
+            widget.Accommodify.latitude,
         ),
         zoom: 11
       ),

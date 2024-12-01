@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:accommodation/core/utils/loader_dialog.dart';
-import 'package:accommodation/core/utils/show_snackbar.dart';
-import 'package:accommodation/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:accommodation/features/auth/presentation/screens/signin_screen.dart';
+import 'package:Accommodify/core/utils/loader_dialog.dart';
+import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:Accommodify/features/auth/presentation/screens/signin_screen.dart';
 
 class Test extends StatelessWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
