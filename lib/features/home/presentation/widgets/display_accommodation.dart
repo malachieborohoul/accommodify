@@ -1,9 +1,11 @@
 import 'package:accommodation/core/contants/padding.dart';
+import 'package:accommodation/core/theme/app_palette.dart';
 import 'package:accommodation/core/utils/loader_dialog.dart';
 import 'package:accommodation/core/utils/show_snackbar.dart';
 import 'package:accommodation/features/home/presentation/bloc/accommodation_bloc.dart';
 import 'package:accommodation/features/home/presentation/screens/accommodation_detail_screen.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,29 +79,29 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                     children: [
                       Stack(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Container(
-                              height: 300,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                image: DecorationImage(
-                                  image: NetworkImage(accommodation.imageUrls[0]),
-                                  fit: BoxFit.cover, // S'assure que l'image remplit le conteneur
-                                ),
-                              ),
-                              
-                              // AnotherCarousel(
-                              //   images: accommodation.imageUrls
-                              //       .map((url) => NetworkImage(url))
-                              //       .toList(),
-                              //   dotSize: 6,
-                              //   indicatorBgPadding: 5,
-                              //   dotBgColor: Colors.transparent,
-                              // ),
-                            ),
-                          ),
+                        ClipRRect(
+  borderRadius: BorderRadius.circular(25),
+  child: SizedBox(
+    height: 300,
+    width: double.infinity,
+    child: CachedNetworkImage(
+      imageUrl: accommodation.imageUrls[0],
+      fit: BoxFit.cover, // Assure que l'image remplit le conteneur
+      placeholder: (context, url) => Center(
+        child: Container(
+          height: 300,
+          width: double.infinity,
+          color: Colors.grey.shade200,
+    
+          child: const Center(child: CircularProgressIndicator(color: AppPalette.gradient1,))), // Indicateur de chargement pendant le téléchargement
+      ),
+      errorWidget: (context, url, error) => const Center(
+        child: Icon(Icons.error), // Icône affichée en cas d'erreur
+      ),
+    ),
+  ),
+),
+
                           const Positioned(
                             top: 20,
                             left: 15,

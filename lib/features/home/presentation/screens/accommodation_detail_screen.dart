@@ -6,6 +6,7 @@ import 'package:accommodation/features/home/domain/entities/accommodation.dart';
 import 'package:accommodation/features/home/presentation/widgets/location_in_map.dart';
 
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AccommodationDetailScreen extends StatefulWidget {
@@ -59,7 +60,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             // widget.place["isActive"] == true
             //     ? ratingAndStarTrue()
             //     : ratingAndStarFalse(),
-            SizedBox(height: size.height * 0.02),
+            // SizedBox(height: size.height * 0.02),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 25,
@@ -67,14 +68,14 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Divider(),
+                  // const Divider(),
                   // placePropertyList(
                   //   size,
                   //   "https://static.vecteezy.com/system/resources/previews/018/923/486/original/diamond-symbol-icon-png.png",
                   //   "This is a rare find",
                   //   "${widget.place['vendor']}'s place is usually fully booked.",
                   // ),
-                  const Divider(),
+                  // const Divider(),
                   // placePropertyList(
                   //   size,
                   //   widget.place['vendorProfile'],
@@ -156,7 +157,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           children: [
             Row(
               children: [
-                Text("${widget.accommodation.price} XAF ", style: TextStyle(fontWeight: FontWeight.bold),),
+                Text("${widget.accommodation.price} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
                 const Text("nuitée "),
               ],
             ),
@@ -333,9 +334,16 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         SizedBox(
           height: size.height * 0.35,
           child: AnotherCarousel(
-            images: widget.accommodation.imageUrls
-                .map((url) => NetworkImage(url))
-                .toList(),
+            images: widget.accommodation.imageUrls.map((url) {
+    return CachedNetworkImage(
+      imageUrl: url,
+      fit: BoxFit.cover,
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(color: AppPalette.gradient1),
+      ),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
+    );
+  }).toList(),
             showIndicator: false,
             dotBgColor: Colors.transparent,
             onImageChange: (p0, p1) {

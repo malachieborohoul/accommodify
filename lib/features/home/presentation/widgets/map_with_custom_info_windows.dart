@@ -9,6 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapWithCustomInfoWindows extends StatefulWidget {
+  static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
+        return FadeTransition(
+          opacity: animation,
+          child: const MapWithCustomInfoWindows(),
+        );
+      });
   const MapWithCustomInfoWindows({super.key});
 
   @override
@@ -91,23 +97,6 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Container(
-                            //   padding: const EdgeInsets.symmetric(
-                            //     vertical: 5,
-                            //     horizontal: 12,
-                            //   ),
-                            //   decoration: BoxDecoration(
-                            //     color: Colors.white,
-                            //     borderRadius: BorderRadius.circular(30),
-                            //   ),
-                            //   child: const Text(
-                            //     "Guest Favorite",
-                            //     style: TextStyle(
-                            //       fontSize: 16,
-                            //       fontWeight: FontWeight.bold,
-                            //     ),
-                            //   ),
-                            // ),
                             const Spacer(),
                             const MyIconButton(
                               icon: Icons.favorite_border,
@@ -136,39 +125,28 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                       Row(
-                        children: [
-                          Text(
-                            accommodation.title,
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
-
-                          ),
-                          const Spacer(),
-                          // const Icon(Icons.star),
-                          const SizedBox(width: 5),
-                          // Text(
-                          //   place['rating'].toString(),
-                          // ),
-                        ],
-                      ),
-                      // Text(
-                      //   "Stay with ${place['vendor']} . ${place['vendorProfession']}",
-                      //   style: const TextStyle(
-                      //     color: Colors.black54,
-                      //     fontSize: 16.5,
-                      //   ),
-                      // ),
-                      Text(
-                        accommodation.address,
-                        
-                      ),
-                   
-                      SizedBox(height: size.height * 0.007),
-                      Text("${accommodation.price} XAF",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
-                      
-                      ),
-                      SizedBox(height: size.height * 0.025),
+                        Row(
+                          children: [
+                            Text(
+                              accommodation.title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(fontWeight: FontWeight.w500),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
+                        Text(accommodation.address),
+                        SizedBox(height: size.height * 0.007),
+                        Text(
+                          "${accommodation.price} XAF",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: size.height * 0.025),
                       ],
                     ),
                   ),
@@ -194,123 +172,70 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return BlocConsumer<AccommodationBloc, AccommodationState>(
-      listener: (context, state) {
-         if (state is AccommodationFailure) {
-          // Close any open dialogs and show an error snackbar
-          closeLoaderDialog(context);
-          showSnackBar(context, state.message);
-        }
-        if (state is AccommodationLoading) {
-          // Show the loader dialog
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            showLoaderDialog(context);
-          });
-        }
-        if (state is AccommodationSuccess) {
-          // Ensure loader dialog is closed if accommodations loaded successfully
-          closeLoaderDialog(context);
-           _updateMarkers(state.accommodations);
-        }
-      },
-      builder: (context, state) {
-         if (state is AccommodationSuccess) {
-        return FloatingActionButton.extended(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          onPressed: () {
-            showModalBottomSheet(
-              clipBehavior: Clip.none,
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              context: context,
-              builder: (BuildContext context) {
-                return Container(
-                  color: Colors.white,
-                  height: size.height ,
-                  width: size.width,
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        height: size.height ,
-                        child: GoogleMap(
-                          initialCameraPosition: CameraPosition(
-                              target: myCurrentLocation, zoom: 10),
-                          onMapCreated: (GoogleMapController controller) {
-                            googleMapController = controller;
-                            _customInfoWindowController.googleMapController =
-                                controller;
-                          },
-                          onTap: (argument) {
-                            _customInfoWindowController.hideInfoWindow!();
-                          },
-                          onCameraMove: (position) {
-                            _customInfoWindowController.onCameraMove!();
-                          },
-                          markers: markers.toSet(),
-                        ),
-                      ),
-                      CustomInfoWindow(
-                        controller: _customInfoWindowController,
-                        height: size.height * 0.34,
-                        width: size.width * 0.85,
-                        offset: 50,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 170,
-                            vertical: 5,
-                          ),
-                          child: Container(
-                            height: 5,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.black54,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
-          label: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: const Row(
-              children: [
-                SizedBox(width: 5),
-                Text(
-                  "Carte",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+    return Scaffold(
+      body: BlocConsumer<AccommodationBloc, AccommodationState>(
+        listener: (context, state) {
+          if (state is AccommodationFailure) {
+            closeLoaderDialog(context);
+            showSnackBar(context, state.message);
+          }
+          if (state is AccommodationLoading) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              showLoaderDialog(context);
+            });
+          }
+          if (state is AccommodationSuccess) {
+            closeLoaderDialog(context);
+            _updateMarkers(state.accommodations);
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: myCurrentLocation,
+                  zoom: 10,
+                ),
+                onMapCreated: (GoogleMapController controller) {
+                  googleMapController = controller;
+                  _customInfoWindowController.googleMapController = controller;
+                },
+                onTap: (argument) {
+                  _customInfoWindowController.hideInfoWindow!();
+                },
+                onCameraMove: (position) {
+                  _customInfoWindowController.onCameraMove!();
+                },
+                markers: markers.toSet(),
+              ),
+              CustomInfoWindow(
+                controller: _customInfoWindowController,
+                height: size.height * 0.34,
+                width: size.width * 0.85,
+                offset: 50,
+              ),
+              Positioned(
+                top: 10,
+                left: size.width / 2 - 25,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    height: 5,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-                SizedBox(width: 5),
-                Icon(
-                  Icons.map_outlined,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 5),
-              ],
-            ),
-          ),
-        );
-      }
-      return const SizedBox();
-      },
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

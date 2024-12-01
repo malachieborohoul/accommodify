@@ -26,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body: const SafeArea(
         bottom: false,
         child: Padding(
           padding: EdgeInsets.only(top: AppPadding.appPadding),
@@ -58,7 +58,42 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       // for google map
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: MapWithCustomInfoWindows(),
+      floatingActionButton: FloatingActionButton.extended(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      onPressed: () {
+       Navigator.push(context, MapWithCustomInfoWindows.route() );
+      },
+      label: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: const Row(
+          children: [
+            SizedBox(width: 5),
+            Text(
+              "Carte",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(width: 5),
+            Icon(
+              Icons.map_outlined,
+              color: Colors.white,
+            ),
+            SizedBox(width: 5),
+          ],
+        ),
+      ),
+    )
+        
+      
+      // floatingActionButton: MapWithCustomInfoWindows(),
     );
   }
 
