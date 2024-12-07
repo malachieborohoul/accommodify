@@ -9,7 +9,8 @@ import 'package:custom_info_window/custom_info_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:location/location.dart';
+import 'package:permission_handler/permission_handler.dart';
 class MapWithCustomInfoWindows extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
         return FadeTransition(
@@ -25,6 +26,30 @@ class MapWithCustomInfoWindows extends StatefulWidget {
 }
 
 class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
+
+  LatLng? userLocation;
+
+   Future<void> _getUserLocation() async {
+    final permission = await Permission.location.request();
+
+    if (permission.isGranted) {
+      final location = Location();
+      final currentLocation = await location.getLocation();
+
+      setState(() {
+        userLocation = LatLng(
+          currentLocation.latitude!,
+          currentLocation.longitude!,
+        );
+      });
+
+      googleMapController.animateCamera(
+        CameraUpdate.newLatLng(userLocation!),
+      );
+    } else {
+      showSnackBar(context, "Permission refusée. Activez la localisation.");
+    }
+  }
   LatLng myCurrentLocation = const LatLng(7.330202, 13.579059);
   BitmapDescriptor customIcon = BitmapDescriptor.defaultMarker;
   late GoogleMapController googleMapController;
@@ -216,7 +241,19 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                 onCameraMove: (position) {
                   _customInfoWindowController.onCameraMove!();
                 },
-                markers: markers.toSet(),
+                markers:{
+                ...markers,
+                 if (userLocation != null)
+                        Marker(
+                          markerId: const MarkerId("userLocation"),
+                          position: userLocation!,
+                          icon: BitmapDescriptor.defaultMarkerWithHue(
+                            BitmapDescriptor.hueBlue,
+                          ),
+                        ),
+
+                } 
+                  
               ),
               CustomInfoWindow(
                 controller: _customInfoWindowController,
@@ -241,6 +278,16 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                   ),
                 ),
               ),
+
+
+               Positioned(
+            top: 20,
+            right: 20,
+            child: FloatingActionButton(
+              onPressed: _getUserLocation,
+              child: const Icon(Icons.my_location),
+            ),
+          ),
             ],
           );
         },
