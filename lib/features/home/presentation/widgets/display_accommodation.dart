@@ -31,7 +31,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
     // final provider = FavoriteProvider.of(context);
     return BlocConsumer<AccommodationBloc, AccommodationState>(
       listener: (context, state) {
-     if (state is AccommodationFailure) {
+        if (state is AccommodationFailure) {
           // Close any open dialogs and show an error snackbar
           closeLoaderDialog(context);
           showSnackBar(context, state.message);
@@ -48,11 +48,8 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
         }
       },
       builder: (context, state) {
-     
         if (state is AccommodationSuccess) {
-
-        
-        return  ListView.builder(
+          return ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: state.accommodations.length,
@@ -68,8 +65,8 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => AccommodationDetailScreen(
-                            Accommodify: Accommodify),
+                        builder: (_) =>
+                            AccommodationDetailScreen(Accommodify: Accommodify),
                       ),
                     );
                   },
@@ -78,28 +75,33 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                     children: [
                       Stack(
                         children: [
-                        ClipRRect(
-  borderRadius: BorderRadius.circular(25),
-  child: SizedBox(
-    height: 300,
-    width: double.infinity,
-    child: CachedNetworkImage(
-      imageUrl: Accommodify.imageUrls[0],
-      fit: BoxFit.cover, // Assure que l'image remplit le conteneur
-      placeholder: (context, url) => Center(
-        child: Container(
-          height: 300,
-          width: double.infinity,
-          color: Colors.grey.shade200,
-    
-          child: const Center(child: CircularProgressIndicator(color: AppPalette.gradient1,))), // Indicateur de chargement pendant le téléchargement
-      ),
-      errorWidget: (context, url, error) => const Center(
-        child: Icon(Icons.error), // Icône affichée en cas d'erreur
-      ),
-    ),
-  ),
-),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: SizedBox(
+                              height: 300,
+                              width: double.infinity,
+                              child: CachedNetworkImage(
+                                imageUrl: Accommodify.imageUrls[0],
+                                fit: BoxFit
+                                    .cover, // Assure que l'image remplit le conteneur
+                                placeholder: (context, url) => Center(
+                                  child: Container(
+                                      height: 300,
+                                      width: double.infinity,
+                                      color: Colors.grey.shade200,
+                                      child: const Center(
+                                          child: CircularProgressIndicator(
+                                        color: AppPalette.gradient1,
+                                      ))), // Indicateur de chargement pendant le téléchargement
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Center(
+                                  child: Icon(Icons
+                                      .error), // Icône affichée en cas d'erreur
+                                ),
+                              ),
+                            ),
+                          ),
 
                           const Positioned(
                             top: 20,
@@ -139,8 +141,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                                     // white border
                                     Icon(
                                       Icons.favorite_outline_rounded,
-                                      size: AppPadding.smallSpacer-5,
-
+                                      size: AppPadding.smallSpacer - 5,
                                       color: Colors.white,
                                     ),
                                     // InkWell(
@@ -171,8 +172,10 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                         children: [
                           Text(
                             Accommodify.title,
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
-
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(fontWeight: FontWeight.w500),
                           ),
                           const Spacer(),
                           // const Icon(Icons.star),

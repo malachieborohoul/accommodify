@@ -73,6 +73,20 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
         description: "Découvrez l'élégance intemporelle de Marhaba Hotel, un hôtel de charme situé dans un bâtiment historique du XVIIIe siècle. Avec ses chambres décorées dans un style classique et ses fresques d'époque, cet hôtel vous transporte dans une autre époque. Profitez de notre cour intérieure, de salons feutrés et d'un service attentionné. Un cadre idéal pour une escapade romantique ou un séjour culturel.",
       
       ),
+
+         AccommodationModel(
+        id: "5",
+        title: "Packem Palace",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/partner/bookingcom/photo-o/24/d1/0d/73/caption.jpg?w=900&h=-1&s=1",
+        date: "2024-01-01",
+        price: 20000,
+        address: "Packem Palace, 8HQ8+7PF, Ngaoundéré",
+        latitude: 7.414141562106754, 
+        longitude: 13.548805976718374,
+        imageUrls: ["https://dynamic-media-cdn.tripadvisor.com/media/partner/bookingcom/photo-o/24/d1/0d/73/caption.jpg?w=900&h=-1&s=1","https://dynamic-media-cdn.tripadvisor.com/media/partner/bookingcom/photo-o/24/d1/0d/70/caption.jpg?w=900&h=-1&s=1" , "https://dynamic-media-cdn.tripadvisor.com/media/partner/bookingcom/photo-o/24/d1/0d/71/caption.jpg?w=900&h=-1&s=1"],
+        description: "Découvrez l'élégance intemporelle de Packem Palace, un hôtel de charme . Avec ses chambres décorées dans un style classique et ses fresques d'époque, cet hôtel vous transporte dans une autre époque. Profitez de notre cour intérieure, de salons feutrés et d'un service attentionné. Un cadre idéal pour une escapade romantique ou un séjour culturel.",
+      
+      ),
       
     ];
   } catch (e) {

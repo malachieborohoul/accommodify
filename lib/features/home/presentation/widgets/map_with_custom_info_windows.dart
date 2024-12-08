@@ -284,6 +284,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
             top: 20,
             right: 20,
             child: FloatingActionButton(
+              backgroundColor: Colors.white,
               onPressed: _getUserLocation,
               child: const Icon(Icons.my_location),
             ),

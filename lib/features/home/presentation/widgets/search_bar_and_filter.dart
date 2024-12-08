@@ -1,9 +1,15 @@
 import 'package:Accommodify/core/contants/padding.dart';
+import 'package:Accommodify/features/home/presentation/screens/accommodation_filter_screen.dart';
 import 'package:flutter/material.dart';
 
-class SearchBarAndFilter extends StatelessWidget {
+class SearchBarAndFilter extends StatefulWidget {
   const SearchBarAndFilter({super.key});
 
+  @override
+  State<SearchBarAndFilter> createState() => _SearchBarAndFilterState();
+}
+
+class _SearchBarAndFilterState extends State<SearchBarAndFilter> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -78,13 +84,39 @@ class SearchBarAndFilter extends StatelessWidget {
               ),
               shape: BoxShape.circle,
             ),
-            child: const Icon(
-              Icons.tune,
-              size: AppPadding.miniSpacer+5,
+            child: GestureDetector(
+              onTap: _showFilterBottomSheet,
+              child: const Icon(
+                Icons.tune,
+                size: AppPadding.miniSpacer+5,
+              ),
             ),
           ),
         ],
       ),
     );
+
+
+
+    
+  }
+
+    void _showFilterBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.9,
+        builder: (_, controller) => Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: AccommodationFilterScreen(controller: controller),
+        ),
+      ),
+    );
   }
 }
+
