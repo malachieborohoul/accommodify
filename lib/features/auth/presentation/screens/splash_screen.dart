@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:Accommodify/core/theme/app_palette.dart';
 import 'package:Accommodify/features/auth/presentation/screens/loading_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -58,7 +57,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           Center(
             child: ScaleTransition(
                           scale: _animation,
-                          child: const Text("Accomodify", style:  TextStyle(color: AppPalette.gradient1, fontSize: 35, fontWeight: FontWeight.bold)),
+                          child:  Image.asset("assets/logo.png", width: 200,)
+                          
+                          // Text("Accomodify", style:  TextStyle(color: AppPalette.gradient1, fontSize: 35, fontWeight: FontWeight.bold)),
                         ),
           ),
           );

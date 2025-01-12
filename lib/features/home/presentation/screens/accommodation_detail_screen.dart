@@ -156,7 +156,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           children: [
             Row(
               children: [
-                Text("${widget.Accommodify.price} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
+                Text("${widget.Accommodify.id} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
                 const Text("nuitée "),
               ],
             ),

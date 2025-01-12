@@ -199,17 +199,17 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                           color: Colors.black54,
                         ),
                       ),
-                      Text(
-                        Accommodify.date,
-                        style: const TextStyle(
-                          fontSize: 16.5,
-                          color: Colors.black54,
-                        ),
-                      ),
+                      // Text(
+                      //   Accommodify.date,
+                      //   style: const TextStyle(
+                      //     fontSize: 16.5,
+                      //     color: Colors.black54,
+                      //   ),
+                      // ),
                       SizedBox(height: size.height * 0.007),
                       RichText(
                         text: TextSpan(
-                          text: "${Accommodify.price} XAF",
+                          text: "${Accommodify.id} XAF",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,

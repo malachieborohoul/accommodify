@@ -1,21 +1,20 @@
 import 'dart:convert';
 
+import 'package:Accommodify/features/home/data/models/chambre_model.dart';
 import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 
 
 class AccommodationModel extends Accommodation{
-  AccommodationModel({required super.id, required super.title, required super.image, required super.date, required super.price, required super.address,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
+  AccommodationModel({required super.id, required super.title,   required super.address,required super.chambre,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'image': image,
-      'date': date,
-      'price': price,
       'address': address,
       'description': description,
+      'chambre': chambre,
       'latitude': latitude,
       'longitude': longitude,
       'imageUrls': imageUrls,
@@ -26,9 +25,7 @@ class AccommodationModel extends Accommodation{
     return AccommodationModel(
       id: map['id'] ?? '' ,
       title: map['title'] ?? '',
-      image: map['image'] ?? '',
-      date: map['date'] ?? '',
-      price: map['price'] ?? 0,
+    chambre: ChambreModel.fromMap(map['chambre'] ?? {}),
       address: map['address'] ?? '',
       description: map['description'] ?? '',
       latitude: map['latitude'] ?? '',
@@ -43,29 +40,27 @@ class AccommodationModel extends Accommodation{
       AccommodationModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   AccommodationModel copyWith({
-    String? id,
+    int? id,
     String? title,
-    String? image,
     String? date,
-    int? price,
     String? address,
     String? description,
-    double? latitude,
-    double? longitude,
+    String? latitude,
+    String? longitude,
+    ChambreModel? chambre,
     List<String>? imageUrls
     
   }) {
     return AccommodationModel(
       id: id ?? this.id,
       title: title ?? this.title,
-      image: image ?? this.image,
-      date: image ?? this.date,
-      price: price ?? this.price,
+     
       address: address ?? this.address,
       description: description ?? this.description,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       imageUrls: imageUrls ?? this.imageUrls,
+      chambre: chambre ?? this.chambre,
      
     );
   }

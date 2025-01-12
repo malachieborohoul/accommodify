@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Accommodify/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:Accommodify/core/common/widgets/loader.dart';
 import 'package:Accommodify/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:Accommodify/features/auth/presentation/screens/signin_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -54,10 +53,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   state is AuthInitial ||
                   state is AuthSignOutSuccess) {
                 // L'utilisateur n'est pas authentifié, redirection vers la page de connexion
-                Navigator.pushReplacement(
-                  context,
-                  OnboardingScreen.route(),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   OnboardingScreen.route(),
+                // );
+                Navigator.pushReplacement(context, AppMainScreen.route());
               }
           },
           child: const Center(
