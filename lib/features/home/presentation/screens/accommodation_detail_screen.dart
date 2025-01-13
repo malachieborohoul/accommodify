@@ -11,7 +11,12 @@ import 'package:flutter/material.dart';
 class AccommodationDetailScreen extends StatefulWidget {
   final Accommodation Accommodify;
   const AccommodationDetailScreen({super.key, required this.Accommodify});
-
+   static route( Accommodation Accommodify) => PageRouteBuilder(pageBuilder: (_, animation, __) {
+        return FadeTransition(
+          opacity: animation,
+          child:  AccommodationDetailScreen(Accommodify: Accommodify,),
+        );
+      });
   @override
   State<AccommodationDetailScreen> createState() => _AccommodationDetailScreenState();
 }
