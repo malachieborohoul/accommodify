@@ -38,6 +38,8 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
           ChambreModel(id: 2, price: "10000", description: "description", type: "Standard"),
           ChambreModel(id: 3, price: "30000", description: "description", type: "Luxe")
         ],
+        phone:"+237690120690",
+
       ),
         AccommodationModel(
         id: 2,
@@ -47,6 +49,7 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
         address: "Adamaoua Hôtel, 8HQ8+7PF, Ngaoundéré",
         latitude: "7.338200835367365",
         longitude:" 13.566814579663829",
+        phone:"+237697140690",
         imageUrls: ["https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/66/b3/6c/adamaoua-hotel.jpg?w=1600&h=-1&s=1", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/66/b3/77/adamaoua-hotel.jpg?w=1600&h=-1&s=1"],
         description: "Plongez dans un monde de confort et de luxe au Adamaoua Hôtel, où chaque détail est pensé pour offrir une expérience inoubliable. Nos chambres spacieuses au design contemporain allient élégance et modernité. Profitez de notre spa haut de gamme, de notre piscine panoramique et d'une gastronomie exquise servie par un chef étoilé. Idéalement situé au cœur de la ville, l'hôtel est parfait pour les voyageurs d'affaires et de loisirs.",
  chambres: [
@@ -68,6 +71,8 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
                              ChambreModel(id: 1, price: "30000", description: "description", type: "Économique"),
           ChambreModel(id: 2, price: "40000", description: "description", type: "Standard"),
         ],
+        phone:"+237690170690",
+
       ),
         AccommodationModel(
         id: 4,
@@ -84,6 +89,8 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
           ChambreModel(id: 2, price: "30000", description: "description", type: "Standard"),
           ChambreModel(id: 3, price: "50000", description: "description", type: "Luxe")
         ],
+        phone:"+237690170692",
+
       ),
 
          AccommodationModel(
@@ -101,6 +108,8 @@ class AccommodationLocalDataSourceImpl implements AccommodationLocalDataSource {
           ChambreModel(id: 2, price: "40000", description: "description", type: "Standard"),
           ChambreModel(id: 3, price: "40000", description: "description", type: "Luxe")
         ],
+        phone:"+237691170690",
+
       ),
       
     ];

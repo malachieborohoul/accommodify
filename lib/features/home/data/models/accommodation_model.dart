@@ -5,7 +5,7 @@ import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 
 
 class AccommodationModel extends Accommodation{
-  AccommodationModel({required super.id, required super.title, required super.type,  required super.address,required super.chambres,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
+  AccommodationModel({required super.id, required super.title, required super.type,  required super.address,required super.chambres,required super.description, required super.latitude, required super.longitude, required super.phone, required super.imageUrls});
 
 
   Map<String, dynamic> toMap() {
@@ -17,6 +17,7 @@ class AccommodationModel extends Accommodation{
       'chambres': chambres,
       'latitude': latitude,
       'longitude': longitude,
+      'phone': phone,
       'imageUrls': imageUrls,
     };
   }
@@ -30,6 +31,7 @@ class AccommodationModel extends Accommodation{
       description: map['description'] ?? '',
       latitude: map['latitude'] ?? '',
       longitude: map['longitude'] ?? '',
+      phone: map['phone'] ?? '',
       type: map['type'] ?? '',
       imageUrls: map['imageUrls'] ?? [],
       chambres: map['chambres'] ?? []
@@ -50,6 +52,7 @@ class AccommodationModel extends Accommodation{
     String? latitude,
     String? longitude,
     String? type,
+    String? phone,
     List<ChambreModel>? chambres,
     List<String>? imageUrls
     
@@ -65,6 +68,7 @@ class AccommodationModel extends Accommodation{
       imageUrls: imageUrls ?? this.imageUrls,
       chambres: chambres ?? this.chambres,
       type: type ?? this.type,
+      phone: phone ?? this.phone,
      
     );
   }

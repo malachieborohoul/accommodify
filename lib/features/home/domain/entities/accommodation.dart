@@ -9,6 +9,7 @@ class Accommodation {
   final String latitude;
   final String longitude;
   final String type;
+  final String phone;
   final List<String> imageUrls;
 
   Accommodation( 
@@ -22,6 +23,7 @@ class Accommodation {
      
       required this.latitude,
       required this.longitude,
+      required this.phone,
       required this.imageUrls});
 
 }

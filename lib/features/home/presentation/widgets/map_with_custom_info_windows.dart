@@ -4,6 +4,7 @@ import 'package:Accommodify/core/utils/loader_dialog.dart';
 import 'package:Accommodify/core/utils/show_snackbar.dart';
 import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 import 'package:Accommodify/features/home/presentation/bloc/accommodation_bloc.dart';
+import 'package:Accommodify/features/home/presentation/screens/accommodation_detail_screen.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_info_window/custom_info_window.dart';
@@ -90,102 +91,108 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
         ),
         onTap: () {
           _customInfoWindowController.addInfoWindow!(
-            Container(
-              height: size.height * 0.16,
-              width: size.width * 0.8,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      SizedBox(
-                        height: size.height * 0.2,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(25),
-                            topRight: Radius.circular(25),
-                          ),
-                          child: AnotherCarousel(
-                            images: Accommodify.imageUrls.map((url) {
-    return CachedNetworkImage(
-      imageUrl: url,
-      fit: BoxFit.cover,
-      placeholder: (context, url) => const Center(
-        child: CircularProgressIndicator(color: AppPalette.gradient1),
-      ),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
-    );
-  }).toList(),
-                            dotSize: 5,
-                            indicatorBgPadding: 5,
-                            dotBgColor: Colors.transparent,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 10,
-                        left: 14,
-                        right: 14,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Spacer(),
-                            // const MyIconButton(
-                            //   icon: Icons.favorite_border,
-                            //   radius: 15,
-                            // ),
-                            const SizedBox(width: 13),
-                            InkWell(
-                              onTap: () {
-                                _customInfoWindowController.hideInfoWindow!();
-                              },
-                              child: const MyIconButton(
-                                icon: Icons.close,
-                                radius: 15,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 8,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            GestureDetector(
+              onTap: (){
+                    Navigator.push(context, AccommodationDetailScreen.route(Accommodify));
+
+              },
+              child: Container(
+                height: size.height * 0.16,
+                width: size.width * 0.8,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Column(
+                  children: [
+                    Stack(
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              Accommodify.title,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(fontWeight: FontWeight.w500),
+                        SizedBox(
+                          height: size.height * 0.2,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(25),
+                              topRight: Radius.circular(25),
                             ),
-                            const Spacer(),
-                          ],
+                            child: AnotherCarousel(
+                              images: Accommodify.imageUrls.map((url) {
+                  return CachedNetworkImage(
+                    imageUrl: url,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(color: AppPalette.gradient1),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                  );
+                }).toList(),
+                              dotSize: 5,
+                              indicatorBgPadding: 5,
+                              dotBgColor: Colors.transparent,
+                            ),
+                          ),
                         ),
-                        Text(Accommodify.address),
-                        SizedBox(height: size.height * 0.007),
-                        Text(
-                          "${Accommodify.chambres[0].price} XAF",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(fontWeight: FontWeight.w500),
+                        Positioned(
+                          top: 10,
+                          left: 14,
+                          right: 14,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Spacer(),
+                              // const MyIconButton(
+                              //   icon: Icons.favorite_border,
+                              //   radius: 15,
+                              // ),
+                              const SizedBox(width: 13),
+                              InkWell(
+                                onTap: () {
+                                  _customInfoWindowController.hideInfoWindow!();
+                                },
+                                child: const MyIconButton(
+                                  icon: Icons.close,
+                                  radius: 15,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(height: size.height * 0.025),
                       ],
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 8,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                Accommodify.title,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(fontWeight: FontWeight.w500),
+                              ),
+                              const Spacer(),
+                            ],
+                          ),
+                          Text(Accommodify.address),
+                          SizedBox(height: size.height * 0.007),
+                          Text(
+                            "${Accommodify.chambres[0].price} XAF",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(height: size.height * 0.025),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             LatLng(

@@ -7,6 +7,7 @@ import 'package:Accommodify/features/home/presentation/widgets/location_in_map.d
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AccommodationDetailScreen extends StatefulWidget {
   final Accommodation Accommodify;
@@ -23,6 +24,16 @@ class AccommodationDetailScreen extends StatefulWidget {
 
 class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
   int currentIndex = 0;
+
+    // Make a call
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -102,7 +113,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             // Row(
             //   children: [
@@ -110,21 +121,26 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             //     const Text("nuitée "),
             //   ],
             // ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 35,
-                vertical: 15,
-              ),
-              decoration: BoxDecoration(
-                color: AppPalette.gradient1,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: const Text(
-                "Contactez",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: (){
+                 _makePhoneCall(widget.Accommodify.phone);
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 35,
+                  vertical: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: AppPalette.gradient1,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: const Text(
+                  "Contactez",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

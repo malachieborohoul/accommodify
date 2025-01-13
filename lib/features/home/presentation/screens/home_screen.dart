@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       // for google map
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.extended(
       backgroundColor: Colors.transparent,
       elevation: 0,

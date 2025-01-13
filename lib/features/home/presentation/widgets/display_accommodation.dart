@@ -1,4 +1,3 @@
-import 'package:Accommodify/core/contants/padding.dart';
 import 'package:Accommodify/core/theme/app_palette.dart';
 import 'package:Accommodify/core/utils/loader_dialog.dart';
 import 'package:Accommodify/core/utils/show_snackbar.dart';
@@ -139,11 +138,11 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                                   alignment: Alignment.center,
                                   children: [
                                     // white border
-                                    Icon(
-                                      Icons.favorite_outline_rounded,
-                                      size: AppPadding.smallSpacer - 5,
-                                      color: Colors.white,
-                                    ),
+                                    // Icon(
+                                    //   Icons.favorite_outline_rounded,
+                                    //   size: AppPadding.smallSpacer - 5,
+                                    //   color: Colors.white,
+                                    // ),
                                     // InkWell(
                                     //   onTap: () {
                                     //     // provider.toggleFavorite(place);
@@ -207,17 +206,20 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       //   ),
                       // ),
                       SizedBox(height: size.height * 0.007),
+                            Row(
+                              children: [
+                                Chip(
+                                  label: Text(
+                                  Accommodify.type,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(fontWeight: FontWeight.w400),
+                                                            ),
+                                ),
                            const SizedBox(width: 5),
-                            Text(
-                            Accommodify.type,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(fontWeight: FontWeight.w400),
-                          ),
-                      SizedBox(height: size.height * 0.007),
 
-                      RichText(
+                                  RichText(
                         text: TextSpan(
                           text: "${Accommodify.chambres[0].price} XAF",
                           style: const TextStyle(
@@ -237,6 +239,11 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                           ],
                         ),
                       ),
+                              ],
+                            ),
+                      SizedBox(height: size.height * 0.007),
+
+                    
                       SizedBox(height: size.height * 0.025),
                     ],
                   ),

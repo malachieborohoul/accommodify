@@ -73,6 +73,7 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
           type: accommodation.type,
           latitude: accommodation.latitude,
           longitude: accommodation.longitude,
+          phone: accommodation.phone,
           imageUrls: accommodation.imageUrls,
         ));
       }

@@ -16,26 +16,21 @@ class LocationInMap extends StatefulWidget {
 class _LocationInMapState extends State<LocationInMap> {
   @override
   Widget build(BuildContext context) {
+    // Récupération des coordonnées de l'hébergement
+    final latitude = double.parse(widget.Accommodify.latitude);
+    final longitude = double.parse(widget.Accommodify.longitude);
+
     return GoogleMap(
-      
       myLocationButtonEnabled: false,
       markers: {
         Marker(
-          markerId: MarkerId(
-            widget.Accommodify.address,
-          ),
-          position: LatLng(
-            double.parse(widget.Accommodify.latitude),
-            double.parse(widget.Accommodify.latitude),
-          ),
+          markerId: MarkerId(widget.Accommodify.address),
+          position: LatLng(latitude, longitude),  // Utilisation correcte de latitude et longitude
         ),
       },
       initialCameraPosition: CameraPosition(
-        target: LatLng(
-           double.parse(widget.Accommodify.latitude),
-            double.parse(widget.Accommodify.latitude),
-        ),
-        zoom: 11
+        target: LatLng(latitude, longitude), // Position initiale de la caméra
+        zoom: 11,
       ),
     );
   }
