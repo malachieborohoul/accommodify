@@ -21,7 +21,6 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // final provider = FavoriteProvider.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -44,97 +43,43 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   Text(
                     "Chambre à ${widget.Accommodify.address}",
                     style: Theme.of(context).textTheme.bodyLarge,
-                    
                   ),
-                  // const Text(
-                  //   'bedAndBathroom',
-                  //   style: TextStyle(
-                  //     fontSize: 17,
-                  //     fontWeight: FontWeight.w400,
-                  //   ),
-                  // ),
+                        // Affichage des types de chambres
+            const Divider(),
+            chambreTypesSection(widget.Accommodify),
+            const Divider(),
+            const SizedBox(height: AppPadding.miniSpacer),
+            Text(
+              "A propos",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
+            ),
+            const SizedBox(height: AppPadding.miniSpacer),
+            Text(widget.Accommodify.description),
+            const SizedBox(height: AppPadding.miniSpacer),
+            const Divider(),
+            const SizedBox(height: AppPadding.miniSpacer),
+            Text(
+              "Où vous serez",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
+            ),
+            const SizedBox(height: AppPadding.miniSpacer),
+            Text(
+              widget.Accommodify.address,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: AppPadding.miniSpacer),
+            SizedBox(
+              height: 400,
+              width: size.width,
+              child: LocationInMap(
+                Accommodify: widget.Accommodify,
+              ),
+            ),
+            const SizedBox(height: 100),
                 ],
               ),
             ),
-            // widget.place["isActive"] == true
-            //     ? ratingAndStarTrue()
-            //     : ratingAndStarFalse(),
-            // SizedBox(height: size.height * 0.02),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // const Divider(),
-                  // placePropertyList(
-                  //   size,
-                  //   "https://static.vecteezy.com/system/resources/previews/018/923/486/original/diamond-symbol-icon-png.png",
-                  //   "This is a rare find",
-                  //   "${widget.place['vendor']}'s place is usually fully booked.",
-                  // ),
-                  // const Divider(),
-                  // placePropertyList(
-                  //   size,
-                  //   widget.place['vendorProfile'],
-                  //   "Stay with ${widget.place['vendor']}",
-                  //   "Superhost . ${widget.place['yearOfHostin']} years hosting",
-                  // ),
-                  const Divider(),
-                  placePropertyList(
-                      size,
-                      "https://cdn-icons-png.flaticon.com/512/6192/6192020.png",
-                      "Chambre moderne",
-                      "Votre propre chambre dans un foyer, plus d'accès aux espaces partagés."),
-                  placePropertyList(
-                      size,
-                      "https://cdn0.iconfinder.com/data/icons/co-working/512/coworking-sharing-17-512.png",
-                      "Service Restaurant",
-                      "Une restautation avec des mets locaux."),
-                  placePropertyList(
-                      size,
-                      "https://img.pikbest.com/element_our/20230223/bg/102f90fb4dec6.png!w700wp",
-                      "Service Spa",
-                      "Vous partagerez le spa avec d'autres personnes."),
-                  const Divider(),
-                  const SizedBox(height: AppPadding.miniSpacer),
-                   Text(
-                    "A propos",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)
-                  ),
-                  const SizedBox(height: AppPadding.miniSpacer),
-
-                   Text(widget.Accommodify.description),
-                  const SizedBox(height: AppPadding.miniSpacer),
-
-                  const Divider(),
-                  const SizedBox(height: AppPadding.miniSpacer),
-
-                   Text(
-                    "Où vous serez",
-                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)
-
-                  ),
-                  const SizedBox(height: AppPadding.miniSpacer),
-
-                  Text(
-                    widget.Accommodify.address,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  const SizedBox(height: AppPadding.miniSpacer),
-
-                  SizedBox(
-                    height: 400,
-                    width: size.width,
-                    child: LocationInMap(
-                      Accommodify: widget.Accommodify,
-                    ),
-                  ),
-                  const SizedBox(height: 100),
-                ],
-              ),
-            ),
+      
           ],
         ),
       ),
@@ -154,13 +99,12 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Text("${widget.Accommodify.id} XAF ", style: const TextStyle(fontWeight: FontWeight.bold),),
-                const Text("nuitée "),
-              ],
-            ),
-           
+            // Row(
+            //   children: [
+            //     Text("${widget.Accommodify.id} XAF ", style: const TextStyle(fontWeight: FontWeight.bold)),
+            //     const Text("nuitée "),
+            //   ],
+            // ),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 35,
@@ -205,7 +149,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             children: [
               Text(
                 title,
-                style:Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
               ),
               Text(
                 subtitle,
@@ -215,117 +159,13 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                   fontSize: size.width * 0.0346,
                   color: Colors.grey.shade700,
                 ),
-              )
+              ),
             ],
-          ))
+          )),
         ],
       ),
     );
   }
-
-  // Padding ratingAndStarFalse() => Padding(
-  //       padding: const EdgeInsets.symmetric(horizontal: 25),
-  //       child: Row(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           const Icon(Icons.star),
-  //           const SizedBox(width: 5),
-  //           Text(
-  //             "${widget.place['rating'].toString()} . ",
-  //             style: const TextStyle(
-  //               fontSize: 17,
-  //               fontWeight: FontWeight.bold,
-  //             ),
-  //           ),
-  //           Text(
-  //             "${widget.place['review'].toString()}reviews",
-  //             style: const TextStyle(
-  //               fontSize: 17,
-  //               decoration: TextDecoration.underline,
-  //               fontWeight: FontWeight.w500,
-  //             ),
-  //           )
-  //         ],
-  //       ),
-  //     );
-
-  // Container ratingAndStarTrue() {
-  //   return Container(
-  //     margin: const EdgeInsets.symmetric(
-  //       horizontal: 13,
-  //       vertical: 5,
-  //     ),
-  //     padding: const EdgeInsets.symmetric(
-  //       horizontal: 8,
-  //       vertical: 15,
-  //     ),
-  //     decoration: BoxDecoration(
-  //       border: Border.all(
-  //         color: Colors.black26,
-  //       ),
-  //       borderRadius: BorderRadius.circular(15),
-  //     ),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         Column(
-  //           children: [
-  //             Text(
-  //               widget.place['rating'].toString(),
-  //               style: const TextStyle(
-  //                 fontSize: 17,
-  //                 fontWeight: FontWeight.bold,
-  //                 height: 1,
-  //               ),
-  //             ),
-  //             StarRating(rating: widget.place['rating']),
-  //           ],
-  //         ),
-  //         Stack(
-  //           children: [
-  //             Image.network(
-  //               "https://wallpapers.com/images/hd/golden-laurel-wreathon-teal-background-k5791qxis5rtcx7w-k5791qxis5rtcx7w.png",
-  //               height: 50,
-  //               width: 130,
-  //               color: Colors.amber,
-  //             ),
-  //             const Positioned(
-  //               left: 35,
-  //               child: Text(
-  //                 "Guest\nfavorite",
-  //                 style: TextStyle(
-  //                   fontSize: 16,
-  //                   fontWeight: FontWeight.bold,
-  //                   height: 1.2,
-  //                   color: Colors.black,
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //         Column(
-  //           children: [
-  //             Text(
-  //               widget.place['review'].toString(),
-  //               style: const TextStyle(
-  //                 fontWeight: FontWeight.bold,
-  //                 fontSize: 17,
-  //               ),
-  //             ),
-  //             const Text(
-  //               "Reviews",
-  //               style: TextStyle(
-  //                 height: 0.7,
-  //                 color: Colors.black,
-  //                 decoration: TextDecoration.underline,
-  //               ),
-  //             )
-  //           ],
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Stack detailImageandIcon(Size size, BuildContext context) {
     return Stack(
@@ -334,15 +174,15 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
           height: size.height * 0.35,
           child: AnotherCarousel(
             images: widget.Accommodify.imageUrls.map((url) {
-    return CachedNetworkImage(
-      imageUrl: url,
-      fit: BoxFit.cover,
-      placeholder: (context, url) => const Center(
-        child: CircularProgressIndicator(color: AppPalette.gradient1),
-      ),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
-    );
-  }).toList(),
+              return CachedNetworkImage(
+                imageUrl: url,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(color: AppPalette.gradient1),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              );
+            }).toList(),
             showIndicator: false,
             dotBgColor: Colors.transparent,
             onImageChange: (p0, p1) {
@@ -391,34 +231,23 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                     icon: Icons.arrow_back_ios_new,
                   ),
                 ),
-                
-                // const MyIconButton(icon: Icons.share_outlined),
-                //  SizedBox(width: size.width * 0.9),
-                // after this all let's make favorite button function by using provider
-                Row(
-                  children: [
-                    const MyIconButton(icon: Icons.share_outlined),
-                    const SizedBox(
-                  width: 20,
-                ),
-                    InkWell(
-                      onTap: () {
-                        // provider.toggleFavorite(widget.Accommodify);
-                      },
-                      child: const MyIconButton(
-                        icon: 
-                        // provider.isExist(widget.place)
-                        //     ? Icons.favorite
-                        //     : 
-                            
-                            
-                            Icons.favorite_border,
-                        iconColor: 
-                             Colors.black,
-                      ),
-                    ),
-                  ],
-                )
+                // Row(
+                //   children: [
+                //     const MyIconButton(icon: Icons.share_outlined),
+                //     const SizedBox(
+                //       width: 20,
+                //     ),
+                //     InkWell(
+                //       onTap: () {
+                //         // provider.toggleFavorite(widget.Accommodify);
+                //       },
+                //       child: const MyIconButton(
+                //         icon: Icons.favorite_border,
+                //         iconColor: Colors.black,
+                //       ),
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ),
@@ -426,4 +255,56 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
       ],
     );
   }
+
+  // Nouvelle méthode pour afficher les types de chambres
+  Widget chambreTypesSection(Accommodation accommodation) {
+    // Liste des types de chambres dans `widget.Accommodify.chambres`
+    // Exemple de types de chambres
+  
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Types de chambres",
+          style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: AppPadding.miniSpacer),
+        ...accommodation.chambres.map((chambre) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.hotel, color: AppPalette.gradient1),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          chambre.type,
+                          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(chambre.description),
+                        const SizedBox(height: 5),
+                        Text("${chambre.price} XAF", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }).toList(),
+      ],
+    );
+  }
 }
+

@@ -5,18 +5,20 @@ class Accommodation {
   final String title;
   final String address;
   final String description;
-  final Chambre chambre;
-  final  latitude;
+  final List<Chambre> chambres;
+  final String latitude;
   final String longitude;
+  final String type;
   final List<String> imageUrls;
 
-  Accommodation(
+  Accommodation( 
       {
         required this.id,
         required this.title,
       required this.address,
       required this.description,
-      required this.chambre,
+      required this.chambres,
+      required this.type,
      
       required this.latitude,
       required this.longitude,

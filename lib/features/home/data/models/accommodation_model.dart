@@ -5,7 +5,7 @@ import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 
 
 class AccommodationModel extends Accommodation{
-  AccommodationModel({required super.id, required super.title,   required super.address,required super.chambre,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
+  AccommodationModel({required super.id, required super.title, required super.type,  required super.address,required super.chambres,required super.description, required super.latitude, required super.longitude, required super.imageUrls});
 
 
   Map<String, dynamic> toMap() {
@@ -14,7 +14,7 @@ class AccommodationModel extends Accommodation{
       'title': title,
       'address': address,
       'description': description,
-      'chambre': chambre,
+      'chambres': chambres,
       'latitude': latitude,
       'longitude': longitude,
       'imageUrls': imageUrls,
@@ -25,12 +25,14 @@ class AccommodationModel extends Accommodation{
     return AccommodationModel(
       id: map['id'] ?? '' ,
       title: map['title'] ?? '',
-    chambre: ChambreModel.fromMap(map['chambre'] ?? {}),
+    // chambre: ChambreModel.fromMap(map['chambre'] ?? {}),
       address: map['address'] ?? '',
       description: map['description'] ?? '',
       latitude: map['latitude'] ?? '',
       longitude: map['longitude'] ?? '',
+      type: map['type'] ?? '',
       imageUrls: map['imageUrls'] ?? [],
+      chambres: map['chambres'] ?? []
     );
   }
 
@@ -47,7 +49,8 @@ class AccommodationModel extends Accommodation{
     String? description,
     String? latitude,
     String? longitude,
-    ChambreModel? chambre,
+    String? type,
+    List<ChambreModel>? chambres,
     List<String>? imageUrls
     
   }) {
@@ -60,7 +63,8 @@ class AccommodationModel extends Accommodation{
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       imageUrls: imageUrls ?? this.imageUrls,
-      chambre: chambre ?? this.chambre,
+      chambres: chambres ?? this.chambres,
+      type: type ?? this.type,
      
     );
   }

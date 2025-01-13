@@ -25,15 +25,15 @@ class _LocationInMapState extends State<LocationInMap> {
             widget.Accommodify.address,
           ),
           position: LatLng(
-            widget.Accommodify.latitude,
-            widget.Accommodify.latitude,
+            double.parse(widget.Accommodify.latitude),
+            double.parse(widget.Accommodify.latitude),
           ),
         ),
       },
       initialCameraPosition: CameraPosition(
         target: LatLng(
-          widget.Accommodify.latitude,
-            widget.Accommodify.latitude,
+           double.parse(widget.Accommodify.latitude),
+            double.parse(widget.Accommodify.latitude),
         ),
         zoom: 11
       ),

@@ -179,7 +179,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                           ),
                           const Spacer(),
                           // const Icon(Icons.star),
-                          const SizedBox(width: 5),
+                     
                           // Text(
                           //   place['rating'].toString(),
                           // ),
@@ -207,9 +207,19 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       //   ),
                       // ),
                       SizedBox(height: size.height * 0.007),
+                           const SizedBox(width: 5),
+                            Text(
+                            Accommodify.type,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(fontWeight: FontWeight.w400),
+                          ),
+                      SizedBox(height: size.height * 0.007),
+
                       RichText(
                         text: TextSpan(
-                          text: "${Accommodify.id} XAF",
+                          text: "${Accommodify.chambres[0].price} XAF",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,

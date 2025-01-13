@@ -2,6 +2,7 @@ import 'package:Accommodify/components/my_icon_button.dart';
 import 'package:Accommodify/core/theme/app_palette.dart';
 import 'package:Accommodify/core/utils/loader_dialog.dart';
 import 'package:Accommodify/core/utils/show_snackbar.dart';
+import 'package:Accommodify/features/home/domain/entities/accommodation.dart';
 import 'package:Accommodify/features/home/presentation/bloc/accommodation_bloc.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -77,15 +78,15 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
     );
   }
 
-  void _updateMarkers(List Accommodifys) {
+  void _updateMarkers(List<Accommodation> Accommodifys) {
     Size size = MediaQuery.of(context).size;
 
     List<Marker> myMarkers = Accommodifys.map<Marker>((Accommodify) {
       return Marker(
         markerId: MarkerId(Accommodify.address),
         position: LatLng(
-          Accommodify.latitude,
-          Accommodify.longitude,
+          double.parse(Accommodify.latitude),
+          double.parse(Accommodify.longitude),
         ),
         onTap: () {
           _customInfoWindowController.addInfoWindow!(
@@ -132,10 +133,10 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Spacer(),
-                            const MyIconButton(
-                              icon: Icons.favorite_border,
-                              radius: 15,
-                            ),
+                            // const MyIconButton(
+                            //   icon: Icons.favorite_border,
+                            //   radius: 15,
+                            // ),
                             const SizedBox(width: 13),
                             InkWell(
                               onTap: () {
@@ -174,7 +175,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                         Text(Accommodify.address),
                         SizedBox(height: size.height * 0.007),
                         Text(
-                          "${Accommodify.price} XAF",
+                          "${Accommodify.chambres[0].price} XAF",
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -188,8 +189,8 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
               ),
             ),
             LatLng(
-              Accommodify.latitude,
-              Accommodify.longitude,
+            double.parse(Accommodify.latitude),
+          double.parse(Accommodify.longitude),
             ),
           );
         },
