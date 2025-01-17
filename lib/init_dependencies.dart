@@ -1,5 +1,5 @@
 
-import 'package:Accommodify/features/home/data/datasources/accommodation_local_datasource.dart';
+import 'package:Accommodify/features/home/data/datasources/accommodation_remote_datasource.dart';
 import 'package:Accommodify/features/home/data/repositories/accommodation_repository_impl.dart';
 import 'package:Accommodify/features/home/domain/repositories/accommodation_repository.dart';
 import 'package:Accommodify/features/home/domain/usecases/accommodation_get_accommodations.dart';

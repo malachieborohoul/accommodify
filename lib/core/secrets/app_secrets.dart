@@ -9,7 +9,8 @@ static const webClientId =
           '223247509508-tp7gjnev31j5d5r05auhfjtr5ga3ojub.apps.googleusercontent.com';
 
   
-  static const baseUrl = 'https://homesearch-backend-dockerhub-latest.onrender.com/api';
+  // static const baseUrl = 'https://homesearch-backend-dockerhub-latest.onrender.com/api';
+  static const baseUrl = 'https://accomodify.onrender.com/api';
 
 
 }

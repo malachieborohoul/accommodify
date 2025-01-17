@@ -20,7 +20,7 @@ class AccommodationCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              accommodation.imageUrls.isNotEmpty ? accommodation.imageUrls[0] : 'https://via.placeholder.com/150',
+              accommodation.images.isNotEmpty ? accommodation.images[0].img_url : 'https://via.placeholder.com/150',
               width: 120,
               height: 120,
               fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class AccommodationCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    accommodation.title,
+                    accommodation.name,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

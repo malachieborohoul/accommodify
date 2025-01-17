@@ -1,4 +1,3 @@
-import 'package:Accommodify/features/auth/presentation/screens/onboarding_screen.dart';
 import 'package:Accommodify/features/home/presentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

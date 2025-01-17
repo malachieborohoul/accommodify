@@ -115,9 +115,9 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                               topRight: Radius.circular(25),
                             ),
                             child: AnotherCarousel(
-                              images: Accommodify.imageUrls.map((url) {
+                              images: Accommodify.images.map((url) {
                   return CachedNetworkImage(
-                    imageUrl: url,
+                    imageUrl: url.img_url,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator(color: AppPalette.gradient1),
@@ -169,7 +169,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
                           Row(
                             children: [
                               Text(
-                                Accommodify.title,
+                                Accommodify.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!

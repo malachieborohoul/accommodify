@@ -1,3 +1,4 @@
+import 'package:Accommodify/features/home/presentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:Accommodify/features/auth/presentation/screens/loading_screen.dart';
 
@@ -29,7 +30,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Future.delayed(const Duration(seconds: 2)).then((_) {
 
      if (mounted) {
-      Navigator.pushReplacement(context, LoadingScreen.route());
+      // Navigator.pushReplacement(context, LoadingScreen.route());
+                Navigator.pushReplacement(context, AppMainScreen.route());
+
     }
     });
 

@@ -23,8 +23,8 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
   late RangeValues _currentRange;
   double minPrice = 5000;
   double maxPrice = 100000;
-  List<String> roomTypes = ["Tous", "Standard", "Luxe", "Économique"];
-  List<String> accommodationTypes = ["Tous", "Hotel", "Motel", "Auberge"];
+  List<String> roomTypes = ["Tous", "Standard", "VIP"];
+  List<String> accommodationTypes = ["Tous", "Hotel", "Motel", "Maison", "Appartement", "Camping", "Bâtiment"];
   List<String> selectedRoomTypes = [];
   List<String> selectedAccommodationTypes = [];
   List<Accommodation> accommodations = [];  // Liste d'accommodations récupérées
@@ -66,7 +66,7 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
       if (filteredChambres.isNotEmpty) {
         tempAccommodations.add(Accommodation(
           id: accommodation.id,
-          title: accommodation.title,
+          name: accommodation.name,
           address: accommodation.address,
           description: accommodation.description,
           chambres: filteredChambres,
@@ -74,7 +74,7 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
           latitude: accommodation.latitude,
           longitude: accommodation.longitude,
           phone: accommodation.phone,
-          imageUrls: accommodation.imageUrls,
+          images: accommodation.images, isActif: accommodation.isActif,
         ));
       }
     }
@@ -248,9 +248,21 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Effacer tout",
-              style: const TextStyle(fontWeight: FontWeight.bold),
+            GestureDetector(
+              onTap: (){
+                selectedAccommodationTypes.clear();
+                selectedRoomTypes.clear();
+                 minPrice = 5000;
+             maxPrice = 100000;
+             _currentRange = RangeValues(minPrice, maxPrice);
+                setState(() {
+                  
+                });
+              },
+              child: Text(
+                "Effacer tout",
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             GestureDetector(
               onTap: (){

@@ -51,7 +51,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.Accommodify.title,
+                    widget.Accommodify.name,
                     maxLines: 2,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
                   ),
@@ -194,9 +194,9 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
         SizedBox(
           height: size.height * 0.35,
           child: AnotherCarousel(
-            images: widget.Accommodify.imageUrls.map((url) {
+            images: widget.Accommodify.images.map((url) {
               return CachedNetworkImage(
-                imageUrl: url,
+                imageUrl: url.img_url,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(color: AppPalette.gradient1),
@@ -226,7 +226,7 @@ class _AccommodationDetailScreenState extends State<AccommodationDetailScreen> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10), color: Colors.black45),
             child: Text(
-              "${currentIndex + 1} / ${widget.Accommodify.imageUrls.length}",
+              "${currentIndex + 1} / ${widget.Accommodify.images.length}",
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

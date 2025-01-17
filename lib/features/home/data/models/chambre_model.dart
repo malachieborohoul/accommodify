@@ -32,6 +32,16 @@ class ChambreModel extends Chambre{
   factory ChambreModel.fromJson(String source) =>
       ChambreModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
+ChambreModel.empty():
+this(
+  id:0,
+  description:'_empty.description',
+  price:'_empty.price',
+  type:'_empty.type',
+
+ );
+
+ 
   ChambreModel copyWith({
     int? id,
     
@@ -51,5 +61,7 @@ class ChambreModel extends Chambre{
      
     );
   }
+
+
 
 }

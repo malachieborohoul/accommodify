@@ -55,7 +55,8 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               final Accommodify = state.accommodations[index];
-              return Padding(
+              if(Accommodify.isActif){
+                return Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                 ),
@@ -80,7 +81,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                               height: 300,
                               width: double.infinity,
                               child: CachedNetworkImage(
-                                imageUrl: Accommodify.imageUrls[0],
+                                imageUrl: Accommodify.images[0].img_url,
                                 fit: BoxFit
                                     .cover, // Assure que l'image remplit le conteneur
                                 placeholder: (context, url) => Center(
@@ -170,7 +171,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                       Row(
                         children: [
                           Text(
-                            Accommodify.title,
+                            Accommodify.name,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -249,6 +250,7 @@ class _DisplayAccommodationState extends State<DisplayAccommodation> {
                   ),
                 ),
               );
+              }
             },
           );
         }

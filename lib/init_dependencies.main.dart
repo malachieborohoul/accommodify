@@ -93,8 +93,8 @@ void _initAccommodation() {
   //Datasource
 
   serviceLocator
-    ..registerFactory<AccommodationLocalDataSource>(
-      () => AccommodationLocalDataSourceImpl(
+    ..registerFactory<AccommodationRemoteDataSource>(
+      () => AccommodationRemoteDataSourceImpl(
       ),
     )
 

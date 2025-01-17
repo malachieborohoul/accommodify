@@ -2,6 +2,7 @@ import 'package:Accommodify/core/error/exceptions.dart';
 import 'package:Accommodify/core/error/failures.dart';
 import 'package:Accommodify/core/utils/typedef.dart';
 import 'package:Accommodify/features/home/data/datasources/accommodation_local_datasource.dart';
+import 'package:Accommodify/features/home/data/datasources/accommodation_remote_datasource.dart';
 import 'package:Accommodify/features/home/data/models/accommodation_model.dart';
 
 import 'package:Accommodify/features/home/domain/repositories/accommodation_repository.dart';
@@ -12,10 +13,11 @@ import 'package:fpdart/fpdart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AccommodationRepositoryImpl implements AccommodationRepository {
-  final AccommodationLocalDataSource AccommodifyLocalDataSource;
+  // final AccommodationLocalDataSource AccommodifyLocalDataSource;
+  final AccommodationRemoteDataSource accommodationRemoteDataSource;
 
   AccommodationRepositoryImpl(
-    this.AccommodifyLocalDataSource,
+    this.accommodationRemoteDataSource,
   );
 
 
@@ -27,7 +29,7 @@ class AccommodationRepositoryImpl implements AccommodationRepository {
 
       debugPrint("💡From AccommodationRepository getAccommodations");
 
-     final response= await AccommodifyLocalDataSource.getAccommodations();
+     final response= await accommodationRemoteDataSource.getAccommodations();
 
      
 
