@@ -83,8 +83,9 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
     Size size = MediaQuery.of(context).size;
 
     List<Marker> myMarkers = Accommodifys.map<Marker>((Accommodify) {
+      
       return Marker(
-        markerId: MarkerId(Accommodify.address),
+        markerId: MarkerId(Accommodify.id.toString()),
         position: LatLng(
           double.parse(Accommodify.latitude),
           double.parse(Accommodify.longitude),
