@@ -1,8 +1,16 @@
-# Accommodation
-
-## Demo
+# accommodation
 
 
+<div class="col">
+  
+  
+
+  <h2>Demo</h2>
+  <div class="row">
+    <img src="/assets/images/demo.gif">
+  <div>
+  
+  
+</div>
 
 
-[![2QlADvt.gif](https://iili.io/2QlADvt.gif)](https://freeimage.host/fr)
