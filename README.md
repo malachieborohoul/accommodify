@@ -1,16 +1,5 @@
-# accommodation
+# Accommodation
 
+## Demo
 
-<div class="col">
-  
-  
-
-  <h2>Demo</h2>
-  <div class="row">
-    <img src="https://freeimage.host/i/2QlADvt">
-  <div>
-  
-  
-</div>
-
-
+![Accommodation Demo](https://freeimage.host/i/2QlADvt)
