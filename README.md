@@ -3,7 +3,7 @@
 **Accommodify** helps you find accommodations in Ngaoundéré with filters for price, location, and room type, plus an interactive map.
 
 ## 📥 Download APK  
-Download the latest APK from the [Releases](https://github.com/yourusername/accommodify/releases) section.
+Download the latest APK from the [Releases](https://github.com/malachieborohoul/accommodify/releases) section.
 
 ## 🎥 Demo  
 <img src="/assets/images/demo.gif" alt="Accommodify Demo" width="600px">
